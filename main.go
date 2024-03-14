@@ -14,9 +14,12 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 	http.HandleFunc("GET /api/v1/books", Route.GetAllBooks)
-	http.HandleFunc("GET /api/v1/books/{isbn}", Route.GetByISBN)
-	http.HandleFunc("GET /api/v1/books/{author}", Route.GetByAuthor)
+	http.HandleFunc("GET /api/v1/books/i/{isbn}", Route.GetByISBN)
+	http.HandleFunc("GET /api/v1/books/a/{author}", Route.GetByAuthor)
 	http.HandleFunc("GET /api/v1/books/range", Route.GetInRange)
+	http.HandleFunc("POST /api/v1/books/update", Route.Update)
+	http.HandleFunc("DELETE /api/v1/books/delete", Route.Delete)
+	http.HandleFunc("POST /api/v1/books/add", Route.Insert)
 
 	http.ListenAndServe(":8081", nil)
 }

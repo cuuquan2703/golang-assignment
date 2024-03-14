@@ -2,7 +2,9 @@ package routers
 
 import (
 	"encoding/json"
+	"fmt"
 	_ "fmt"
+	"io"
 	"net/http"
 	"net/url"
 	repo "server/repositories"
@@ -54,6 +56,7 @@ func GetInRange(w http.ResponseWriter, r *http.Request) {
 	params, _ := url.ParseQuery(Url.RawQuery)
 	year1, _ := strconv.Atoi(params["year1"][0])
 	year2, _ := strconv.Atoi(params["year2"][0])
+
 	books, err := BookRepo.GetInRange(year1, year2)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
@@ -61,4 +64,73 @@ func GetInRange(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Header().Set("Content-Type", "application/json")
 	json.NewEncoder(w).Encode(books)
+}
+
+func Update(w http.ResponseWriter, r *http.Request) {
+	body, _ := io.ReadAll(r.Body)
+	defer r.Body.Close()
+	var bookData []repo.Book
+	_ = json.Unmarshal([]byte(string(body)), &bookData)
+	fmt.Println("Request Body:", bookData)
+	for _, data := range bookData {
+		existingBook, err := BookRepo.GetByISBN(data.ISBN)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		if existingBook == (repo.Book{}) {
+			return
+		}
+
+		_, err2 := BookRepo.DB.Exec("UPDATE Book SET name = $1, publish_year = $2, author = $3 WHERE isbn = $4", data.Name, data.PublishYear, data.Author, data.ISBN)
+		if err2 != nil {
+			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+}
+
+func Delete(w http.ResponseWriter, r *http.Request) {
+	body, _ := io.ReadAll(r.Body)
+	defer r.Body.Close()
+	var bookData []repo.Book
+	_ = json.Unmarshal([]byte(string(body)), &bookData)
+	fmt.Println("Request Body:", bookData)
+	for _, data := range bookData {
+		existingBook, err := BookRepo.GetByISBN(data.ISBN)
+		if err != nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+		if existingBook == (repo.Book{}) {
+			return
+		}
+
+		_, err2 := BookRepo.DB.Exec("DELETE FROM Book WHERE isbn = $1", data.ISBN)
+		if err2 != nil {
+			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
+}
+
+func Insert(w http.ResponseWriter, r *http.Request) {
+	body, _ := io.ReadAll(r.Body)
+	defer r.Body.Close()
+	var bookData []repo.Book
+	_ = json.Unmarshal([]byte(string(body)), &bookData)
+	fmt.Println("Request Body:", bookData)
+	for _, data := range bookData {
+		_, err := BookRepo.GetByISBN(data.ISBN)
+		if err == nil {
+			http.Error(w, err.Error(), http.StatusInternalServerError)
+			return
+		}
+
+		_, err2 := BookRepo.DB.Exec(" INSERT INTO Book (isbn, name, publish_year, author) VALUES ($1, $2, $3, $4);", data.ISBN, data.Name, data.PublishYear, data.Author)
+		if err2 != nil {
+			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			return
+		}
+	}
 }

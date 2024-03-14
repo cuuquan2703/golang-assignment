@@ -54,7 +54,7 @@ func (repo BookRepository) GetAllBooks() ([]Book, error) {
 		book := Book{}
 		err := row.Scan(&book.ISBN, &book.Name, &book.Author, &book.PublishYear)
 		if err != nil {
-			return nil, er.New("Something went wrong")
+			return nil, err
 		}
 		books = append(books, book)
 	}
@@ -85,18 +85,18 @@ func (repo BookRepository) GetByISBN(isbn string) (Book, error) {
 
 func (repo BookRepository) GetByAuthor(author string) ([]Book, error) {
 	books := []Book{}
-	cmd := `SELECT isbn,name,author,publish_year from $1 where "author"=$2`
-	row, err := repo.DB.Query(cmd, repo.Table, author)
+	cmd := `SELECT isbn,name,author,publish_year from Book where "author"=$1`
+	row, err := repo.DB.Query(cmd, author)
 
 	if err != nil {
-		return nil, er.New("Something went wrong")
+		return nil, err
 	}
 	defer row.Close()
 	for row.Next() {
 		book := Book{}
 		err := row.Scan(&book.ISBN, &book.Name, &book.Author, &book.PublishYear)
 		if err != nil {
-			return nil, er.New("Something went wrong")
+			return nil, err
 		}
 		books = append(books, book)
 
@@ -111,18 +111,18 @@ func (repo BookRepository) GetByAuthor(author string) ([]Book, error) {
 
 func (repo BookRepository) GetInRange(year1, year2 int) ([]Book, error) {
 	books := []Book{}
-	cmd := `SELECT isbn,name,author,publish_year from $1 where "publish_year"<=$3 and "publish_year">=$2`
-	row, err := repo.DB.Query(cmd, repo.Table, year1, year2)
+	cmd := `SELECT isbn,name,author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1`
+	row, err := repo.DB.Query(cmd, year1, year2)
 
 	if err != nil {
-		return nil, er.New("Something went wrong")
+		return nil, err
 	}
 	defer row.Close()
 	for row.Next() {
 		book := Book{}
 		err := row.Scan(&book.ISBN, &book.Name, &book.Author, &book.PublishYear)
 		if err != nil {
-			return nil, er.New("Something went wrong")
+			return nil, err
 		}
 		books = append(books, book)
 
