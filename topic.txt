@@ -1,0 +1,32 @@
+Viết server golang thực hiện các nhiệm vụ sau:
+ 
+1 book gồm có isbn, name, author, publish year. Design dựa trên từng vesion
+
+Tạo api crud đơn giản về quản lý sách connect với db: sql - postgres/mysql/sqlite
+	- Get book by ISBN
+	- Get book from author
+	- Get book from year1 - year2
+	- Insert book (single and bulk)
+	- Delete book (single and bulk)
+	- Update book (single and bulk)
+
+Các yêu cầu thêm:
+Có implement log( dùng thư viện ngoài, zap hoặc tương tự)
+Implement inserting mock data: Nếu db chưa có data thì sẽ insert data cho db
+Có implement unit test ở các tầng repository và router api ( dùng thư viện test gốc của golang, không dùng thư viện ngoài )
+Tổ chức cấu trúc project rõ ràng, cải thiện style code nha
+Yêu cầu quản lý bằng git (ghi rõ commit nào là của version nào)
+
+migrate database: 
+	ở v1 có 1 bảng Book: Book(isbn - string, name - string, publish_year - int, author - string)
+	ở v2 book sẽ chuyển thành: Book(isbn - string, name - string, publish_year - int, author - FK to Author) và có thêm Author(name - str, birth_day - date)
+	ở v3 book và author là many-to-many
+Cách chạy:
+	- Chạy db ở v1, insert mock data, test APIs, unit test
+	- Chạy db ở v2, backend phát hiện db chưa đc migrate -> migrate (schema và data có sẵn), test APIs, unit test
+	- Chạy db ở v3, backend phát hiện db chưa đc migrate -> migrate (schema và data có sẵn), test APIs, unit test
+ 
+
+Mục đích bài này: Nhắm tới việc cải thiện code style, áp dụng được db migration
+Yêu cầu thêm a muốn mấy đứa xong vào sáng thứ 5
+
