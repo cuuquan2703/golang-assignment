@@ -3,3 +3,24 @@
 {"level":"info","ts":"2024-03-15T08:03:22.730+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:03:22+07:00 GET /api/v1/books"}
 {"level":"info","ts":"2024-03-15T08:03:22.731+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:03:22+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
 {"level":"info","ts":"2024-03-15T08:03:22.776+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:03:22+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T08:05:17.706+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:05:17+07:00 GET /api/v1/books/i/"}
+{"level":"info","ts":"2024-03-15T08:05:17.706+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:05:17+07:00 Querying SELECT isbn,name,author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T08:05:17.883+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:05:17+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T08:05:17.884+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:05:17+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T08:05:17.884+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:05:17+07:00 Error: ","error":"No Book found"}
+{"level":"info","ts":"2024-03-15T08:09:19.312+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:09:19+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T08:09:19.312+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:09:19+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T08:09:19.379+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:09:19+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T08:10:49.691+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:10:49+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T08:10:49.692+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:10:49+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T08:10:49.744+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:10:49+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T08:14:27.422+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:14:27+07:00 GET /api/v1/books/i/"}
+{"level":"info","ts":"2024-03-15T08:14:27.422+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:14:27+07:00 Querying SELECT isbn,name,author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T08:14:27.478+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:14:27+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T08:14:27.481+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:14:27+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T08:14:27.481+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:14:27+07:00 Error: ","error":"No Book found"}
+{"level":"info","ts":"2024-03-15T08:15:03.376+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:15:03+07:00 GET /api/v1/books/i/"}
+{"level":"info","ts":"2024-03-15T08:15:03.377+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:15:03+07:00 Querying SELECT isbn,name,author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T08:15:03.428+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:15:03+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T08:15:03.428+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:15:03+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T08:15:03.429+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:15:03+07:00 Error: ","error":"No Book found"}

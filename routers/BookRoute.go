@@ -12,11 +12,10 @@ import (
 	"strconv"
 )
 
-// type BookRoute struct {
-// 	repo *repo.BookRepository
-// }
-
-// const BookRepo = *repo.BookRepository
+type Response struct {
+	Status  string `json:"status"`
+	Message any    `json:"message"`
+}
 
 var BookRepo, _ = repo.NewBookRepository()
 var L = logger.CreateLog()
@@ -26,11 +25,14 @@ func GetAllBooks(w http.ResponseWriter, r *http.Request) {
 	books, err := BookRepo.GetAllBooks()
 	if err != nil {
 		L.Error("Error: ", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		response := &Response{Status: "fail", Message: err.Error()}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
 		return
 	}
+	response := &Response{Status: "success", Message: books}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(books)
+	json.NewEncoder(w).Encode(response)
 }
 
 func GetByISBN(w http.ResponseWriter, r *http.Request) {
@@ -39,11 +41,14 @@ func GetByISBN(w http.ResponseWriter, r *http.Request) {
 	book, err := BookRepo.GetByISBN(isbn)
 	if err != nil {
 		L.Error("Error: ", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		response := &Response{Status: "fail", Message: err.Error()}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
 		return
 	}
+	response := &Response{Status: "success", Message: book}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(book)
+	json.NewEncoder(w).Encode(response)
 }
 
 func GetByAuthor(w http.ResponseWriter, r *http.Request) {
@@ -52,11 +57,14 @@ func GetByAuthor(w http.ResponseWriter, r *http.Request) {
 	books, err := BookRepo.GetByAuthor(author)
 	if err != nil {
 		L.Error("Error: ", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		response := &Response{Status: "fail", Message: err.Error()}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
 		return
 	}
+	response := &Response{Status: "success", Message: books}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(books)
+	json.NewEncoder(w).Encode(response)
 }
 
 func GetInRange(w http.ResponseWriter, r *http.Request) {
@@ -69,11 +77,14 @@ func GetInRange(w http.ResponseWriter, r *http.Request) {
 	books, err := BookRepo.GetInRange(year1, year2)
 	if err != nil {
 		L.Error("Error: ", err)
-		http.Error(w, err.Error(), http.StatusInternalServerError)
+		response := &Response{Status: "fail", Message: err.Error()}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
 		return
 	}
+	response := &Response{Status: "success", Message: books}
 	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(books)
+	json.NewEncoder(w).Encode(response)
 }
 
 func Update(w http.ResponseWriter, r *http.Request) {
@@ -86,7 +97,10 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		existingBook, err := BookRepo.GetByISBN(data.ISBN)
 		if err != nil {
 			L.Error("Error: ", err)
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+
+			response := &Response{Status: "fail", Message: err.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 		if existingBook == (repo.Book{}) {
@@ -97,6 +111,9 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		if err2 != nil {
 			L.Error("Error: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			response := &Response{Status: "fail", Message: err2.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 	}
@@ -108,12 +125,14 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	defer r.Body.Close()
 	var bookData []repo.Book
 	_ = json.Unmarshal([]byte(string(body)), &bookData)
-	fmt.Println("Request Body:", bookData)
 	for _, data := range bookData {
 		existingBook, err := BookRepo.GetByISBN(data.ISBN)
 		if err != nil {
 			L.Error("Error: ", err)
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+
+			response := &Response{Status: "fail", Message: err.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 		if existingBook == (repo.Book{}) {
@@ -124,6 +143,9 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 		if err2 != nil {
 			L.Error("Error: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			response := &Response{Status: "fail", Message: err2.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 	}
@@ -140,7 +162,10 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		_, err := BookRepo.GetByISBN(data.ISBN)
 		if err == nil {
 			L.Error("Error: ", err)
-			http.Error(w, err.Error(), http.StatusInternalServerError)
+
+			response := &Response{Status: "fail", Message: ""}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 
@@ -148,6 +173,9 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 		if err2 != nil {
 			L.Error("Error: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			response := &Response{Status: "fail", Message: err2.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
 			return
 		}
 	}
