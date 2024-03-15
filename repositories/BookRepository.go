@@ -4,7 +4,6 @@ import (
 	"database/sql"
 	"errors"
 	"os"
-	er "server/error"
 	"server/logger"
 
 	"github.com/joho/godotenv"
@@ -76,7 +75,7 @@ func (repo BookRepository) GetAllBooks() ([]Book, error) {
 
 	if len(books) == 0 {
 		L.Error("Error ", errors.New("no books found"))
-		return nil, er.New("No books found")
+		return nil, errors.New("No books found")
 	}
 	defer row.Close()
 	return books, err
@@ -93,10 +92,10 @@ func (repo BookRepository) GetByISBN(isbn string) (Book, error) {
 	if err != nil {
 		if err == sql.ErrNoRows {
 			L.Error("Error ", errors.New("no books found"))
-			return book, er.New("No Book found")
+			return book, errors.New("No Book found")
 		}
 		L.Error("Error ", err)
-		return book, er.New("Something went wrong")
+		return book, errors.New("Something went wrong")
 	}
 
 	return book, err
@@ -127,7 +126,7 @@ func (repo BookRepository) GetByAuthor(author string) ([]Book, error) {
 
 	if len(books) == 0 {
 		L.Error("Error ", errors.New("no books found"))
-		return nil, er.New("No books found")
+		return nil, errors.New("No books found")
 	}
 
 	return books, err
@@ -158,7 +157,7 @@ func (repo BookRepository) GetInRange(year1, year2 int) ([]Book, error) {
 
 	if len(books) == 0 {
 		L.Error("Error ", errors.New("no books found"))
-		return nil, er.New("No books found")
+		return nil, errors.New("No books found")
 	}
 
 	return books, err
