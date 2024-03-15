@@ -1,0 +1,5 @@
+{"level":"info","ts":"2024-03-15T07:58:10.884+0700","caller":"logger/logger.go:61","msg":"2024-03-15T07:58:10+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T07:58:11.253+0700","caller":"logger/logger.go:61","msg":"2024-03-15T07:58:11+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T08:03:22.730+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:03:22+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T08:03:22.731+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:03:22+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T08:03:22.776+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:03:22+07:00 Query successfully"}

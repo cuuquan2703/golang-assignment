@@ -17,7 +17,7 @@ Có implement unit test ở các tầng repository và router api ( dùng thư v
 Tổ chức cấu trúc project rõ ràng, cải thiện style code nha
 Yêu cầu quản lý bằng git (ghi rõ commit nào là của version nào)
 
-migrate database: 
+migrate database:
 	ở v1 có 1 bảng Book: Book(isbn - string, name - string, publish_year - int, author - string)
 	ở v2 book sẽ chuyển thành: Book(isbn - string, name - string, publish_year - int, author - FK to Author) và có thêm Author(name - str, birth_day - date)
 	ở v3 book và author là many-to-many
