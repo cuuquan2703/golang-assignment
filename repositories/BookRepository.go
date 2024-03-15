@@ -92,7 +92,9 @@ func (repo BookRepository) GetAllBooks() ([]Book, error) {
 
 func (repo BookRepository) GetByISBN(isbn string) (Book, error) {
 	book := Book{}
-	cmd := `SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book WHERE b.isbn = $1`
+	cmd := `SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1`
 	L.Info("Querying " + cmd)
 	row := repo.DB.QueryRow(cmd, isbn)
 	L.Info("Query successfully")
@@ -202,20 +204,32 @@ func (repo BookRepository) Insert(data Book) (sql.Result, error) {
 	data.Author, _ = AuthorRepo.GetByName(data.Author.Name)
 
 	res, err2 := repo.DB.Exec(" INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);", data.ISBN, data.Name, data.PublishYear)
+	_, err3 := BookAuthorRepo.Insert(data.ISBN, data.Author.Id)
 	if err2 != nil {
 		L.Error("Error insert books ", err2)
 	} else {
 		L.Info("Insert successfully books")
 	}
+	if err3 != nil {
+		L.Error("Error insert book_author ", err3)
+	} else {
+		L.Info("Insert successfully book_author")
+	}
 	return res, err
 }
 
 func (repo BookRepository) Delete(data Book) (sql.Result, error) {
+	_, err1 := BookAuthorRepo.Delete(data.ISBN)
+	if err1 != nil {
+		L.Error("Error Delete author ", err1)
+	} else {
+		L.Info("Delete successfully author")
+	}
 	res, err := repo.DB.Exec("DELETE FROM Book WHERE isbn = $1", data.ISBN)
 	if err != nil {
-		L.Error("Error insert author ", err)
+		L.Error("Error Delete author ", err)
 	} else {
-		L.Info("Insert successfully author")
+		L.Info("Delete successfully author")
 	}
 	return res, err
 }

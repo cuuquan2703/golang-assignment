@@ -61,3 +61,25 @@ func (repo BookAuthorRepository) GetAll() ([]BookAuthor, error) {
 	defer row.Close()
 	return Bookauthors, err
 }
+
+func (repo BookAuthorRepository) Insert(IdBook string, IdAuthor int) (sql.Result, error) {
+	L.Info("Insert in to book_author table")
+	res, err := repo.DB.Exec(" INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);", IdBook, IdAuthor)
+	if err != nil {
+		L.Error("Error ", err)
+	} else {
+		L.Info("Insert successfully")
+	}
+	return res, err
+}
+
+func (repo BookAuthorRepository) Delete(IdBook string) (sql.Result, error) {
+	L.Info("Delete from book_author table")
+	res, err := repo.DB.Exec(" DELETE FROM Book_Author WHERE id_book = $1;", IdBook)
+	if err != nil {
+		L.Error("Error ", err)
+	} else {
+		L.Info("Delete successfully")
+	}
+	return res, err
+}
