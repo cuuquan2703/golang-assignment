@@ -24,7 +24,7 @@ func GetAllBooks(w http.ResponseWriter, r *http.Request) {
 	L.Info("GET /api/v1/books")
 	books, err := BookRepo.GetAllBooks()
 	if err != nil {
-		L.Error("Error: ", err)
+		L.Error("Error GetAllBooks: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(response)
@@ -40,7 +40,7 @@ func GetByISBN(w http.ResponseWriter, r *http.Request) {
 	isbn := r.PathValue("isbn")
 	book, err := BookRepo.GetByISBN(isbn)
 	if err != nil {
-		L.Error("Error: ", err)
+		L.Error("Error GetByISBN: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(response)
@@ -56,7 +56,7 @@ func GetByAuthor(w http.ResponseWriter, r *http.Request) {
 	author := r.PathValue("author")
 	books, err := BookRepo.GetByAuthor(author)
 	if err != nil {
-		L.Error("Error: ", err)
+		L.Error("Error GetByAuthor: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(response)
@@ -76,7 +76,7 @@ func GetInRange(w http.ResponseWriter, r *http.Request) {
 
 	books, err := BookRepo.GetInRange(year1, year2)
 	if err != nil {
-		L.Error("Error: ", err)
+		L.Error("Error in range: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
 		w.Header().Set("Content-Type", "application/json")
 		json.NewEncoder(w).Encode(response)
@@ -96,7 +96,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	for _, data := range bookData {
 		existingBook, err := BookRepo.GetByISBN(data.ISBN)
 		if err != nil {
-			L.Error("Error: ", err)
+			L.Error("Error GetByISBN: ", err)
 
 			response := &Response{Status: "fail", Message: err.Error()}
 			w.Header().Set("Content-Type", "application/json")
@@ -107,11 +107,16 @@ func Update(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		_, err2 := BookRepo.DB.Exec("UPDATE Book SET name = $1, publish_year = $2, author = $3 WHERE isbn = $4", data.Name, data.PublishYear, data.Author, data.ISBN)
+		//
+		res, err2 := BookRepo.Update(data)
 		if err2 != nil {
-			L.Error("Error: ", err2)
-			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			L.Error("Error Update: ", err2)
 			response := &Response{Status: "fail", Message: err2.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
+			return
+		} else {
+			response := &Response{Status: "success", Message: res}
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(response)
 			return
@@ -128,7 +133,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	for _, data := range bookData {
 		existingBook, err := BookRepo.GetByISBN(data.ISBN)
 		if err != nil {
-			L.Error("Error: ", err)
+			L.Error("Error GetByISBN: ", err)
 
 			response := &Response{Status: "fail", Message: err.Error()}
 			w.Header().Set("Content-Type", "application/json")
@@ -139,11 +144,16 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		_, err2 := BookRepo.DB.Exec("DELETE FROM Book WHERE isbn = $1", data.ISBN)
+		res, err2 := BookRepo.Delete(data)
 		if err2 != nil {
-			L.Error("Error: ", err2)
+			L.Error("Error Delete: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
 			response := &Response{Status: "fail", Message: err2.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
+			return
+		} else {
+			response := &Response{Status: "success", Message: res}
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(response)
 			return
@@ -159,9 +169,10 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 	_ = json.Unmarshal([]byte(string(body)), &bookData)
 	fmt.Println("Request Body:", bookData)
 	for _, data := range bookData {
+		fmt.Print(data)
 		_, err := BookRepo.GetByISBN(data.ISBN)
 		if err == nil {
-			L.Error("Error: ", err)
+			L.Error("Error GetByISBN: ", err)
 
 			response := &Response{Status: "fail", Message: ""}
 			w.Header().Set("Content-Type", "application/json")
@@ -169,11 +180,15 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		_, err2 := BookRepo.DB.Exec(" INSERT INTO Book (isbn, name, publish_year, author) VALUES ($1, $2, $3, $4);", data.ISBN, data.Name, data.PublishYear, data.Author)
+		res, err2 := BookRepo.Insert(data)
 		if err2 != nil {
-			L.Error("Error: ", err2)
-			http.Error(w, err2.Error(), http.StatusInternalServerError)
+			L.Error("Error Insert: ", err2)
 			response := &Response{Status: "fail", Message: err2.Error()}
+			w.Header().Set("Content-Type", "application/json")
+			json.NewEncoder(w).Encode(response)
+			return
+		} else {
+			response := &Response{Status: "success", Message: res}
 			w.Header().Set("Content-Type", "application/json")
 			json.NewEncoder(w).Encode(response)
 			return

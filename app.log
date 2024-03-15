@@ -24,3 +24,283 @@
 {"level":"info","ts":"2024-03-15T08:15:03.428+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:15:03+07:00 Query successfully"}
 {"level":"error","ts":"2024-03-15T08:15:03.428+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:15:03+07:00 Error ","error":"no books found"}
 {"level":"error","ts":"2024-03-15T08:15:03.429+0700","caller":"logger/logger.go:67","msg":"2024-03-15T08:15:03+07:00 Error: ","error":"No Book found"}
+{"level":"info","ts":"2024-03-15T08:52:54.146+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:52:54+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T08:59:03.379+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:59:03+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T08:59:03.379+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:59:03+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T08:59:03.425+0700","caller":"logger/logger.go:61","msg":"2024-03-15T08:59:03+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T09:00:51.567+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:00:51+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T09:00:51.567+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:00:51+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
+{"level":"error","ts":"2024-03-15T09:00:51.618+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:00:51+07:00 Error","error":"pq: column \"author\" does not exist"}
+{"level":"info","ts":"2024-03-15T09:02:09.768+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:02:09+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T09:02:09.768+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:02:09+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T09:02:09.821+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:02:09+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T09:02:45.937+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:02:45+07:00 GET /api/v1/books/i/"}
+{"level":"info","ts":"2024-03-15T09:02:45.937+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:02:45+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T09:02:45.940+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:02:45+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T09:12:12.744+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T09:12:12.744+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T09:12:12.799+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T09:12:12.800+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=1"}
+{"level":"info","ts":"2024-03-15T09:12:12.839+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T09:12:12.840+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:12:12+07:00 Error","error":"sql: Scan called without calling Next"}
+{"level":"info","ts":"2024-03-15T09:12:12.841+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=2"}
+{"level":"info","ts":"2024-03-15T09:12:12.885+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T09:12:12.886+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:12:12+07:00 Error","error":"sql: Scan called without calling Next"}
+{"level":"info","ts":"2024-03-15T09:12:12.886+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=3"}
+{"level":"info","ts":"2024-03-15T09:12:12.929+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T09:12:12.930+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:12:12+07:00 Error","error":"sql: Scan called without calling Next"}
+{"level":"info","ts":"2024-03-15T09:12:12.930+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=4"}
+{"level":"info","ts":"2024-03-15T09:12:12.966+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:12:12+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T09:12:12.967+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:12:12+07:00 Error","error":"sql: Scan called without calling Next"}
+{"level":"info","ts":"2024-03-15T09:19:08.864+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:19:08+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T09:19:08.865+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:19:08+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T09:19:08.928+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:19:08+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T09:19:08.928+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:19:08+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=1"}
+{"level":"error","ts":"2024-03-15T09:19:08.967+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:19:08+07:00 Error","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T09:19:08.967+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:19:08+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=2"}
+{"level":"error","ts":"2024-03-15T09:19:08.969+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:19:08+07:00 Error","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T09:19:08.969+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:19:08+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=3"}
+{"level":"error","ts":"2024-03-15T09:19:08.970+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:19:08+07:00 Error","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T09:19:08.971+0700","caller":"logger/logger.go:61","msg":"2024-03-15T09:19:08+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=4"}
+{"level":"error","ts":"2024-03-15T09:19:08.972+0700","caller":"logger/logger.go:67","msg":"2024-03-15T09:19:08+07:00 Error","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:00:07.503+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:00:07+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T10:00:07.504+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:00:07+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T10:00:07.563+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:00:07+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T10:00:07.563+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:00:07+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:01:42.688+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:01:42+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T10:01:42.688+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:01:42+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T10:01:42.841+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:01:42+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T10:01:42.841+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:01:42+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:05:06.072+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T10:05:06.072+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T10:05:06.122+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T10:05:06.122+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:05:06.160+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:05:06.161+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:05:06+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:05:06.161+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:05:06.162+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:05:06.163+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:05:06+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:05:06.164+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:05:06.165+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:05:06.166+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:05:06+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:05:06.166+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:05:06.167+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:05:06+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:05:06.168+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:05:06+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:22:56.090+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T10:22:56.090+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T10:22:56.145+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T10:22:56.146+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:22:56.195+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:22:56.195+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:22:56+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:22:56.196+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:22:56.197+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:22:56.198+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:22:56+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:22:56.198+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:22:56.199+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:22:56.199+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:22:56+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:22:56.200+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:22:56.200+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:22:56+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:22:56.201+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:22:56+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:23:07.829+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:07+07:00 GET /api/v1/books/i/"}
+{"level":"info","ts":"2024-03-15T10:23:07.829+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:07+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T10:23:07.830+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:07+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T10:23:07.831+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:07+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:23:07.832+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:07+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:23:07.832+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:23:07+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:23:11.488+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T10:23:11.488+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T10:23:11.489+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T10:23:11.489+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:23:11.490+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:23:11.490+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:23:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:23:11.490+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:23:11.491+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:23:11.491+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:23:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:23:11.491+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:23:11.492+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:23:11.492+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:23:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:23:11.492+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:23:11.493+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:23:11+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:23:11.493+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:23:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T10:24:13.607+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:24:13+07:00 POST /api/v1/books/update"}
+{"level":"info","ts":"2024-03-15T10:24:13.607+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:24:13+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T10:24:13.609+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:24:13+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T10:24:13.609+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:24:13+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:24:13.610+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:24:13+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:24:13.611+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:24:13+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T10:24:13.725+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:24:13+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T10:24:13.726+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:24:13+07:00 Error update author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T10:24:13.727+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:24:13+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T10:24:13.727+0700","caller":"logger/logger.go:61","msg":"2024-03-15T10:24:13+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T10:24:13.728+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:24:13+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T10:24:13.728+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:24:13+07:00 Error insert author ","error":"sql: converting argument $3 type: unsupported type repositories.Author, a struct"}
+{"level":"error","ts":"2024-03-15T10:24:13.729+0700","caller":"logger/logger.go:67","msg":"2024-03-15T10:24:13+07:00 Error: ","error":"sql: converting argument $3 type: unsupported type repositories.Author, a struct"}
+{"level":"info","ts":"2024-03-15T13:38:55.121+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:38:55+07:00 POST /api/v1/books/update"}
+{"level":"info","ts":"2024-03-15T13:38:55.122+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:38:55+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:38:55.347+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:38:55+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T13:38:55.349+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:38:55+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:38:55.469+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:38:55+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:38:55.470+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:38:55+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T13:38:55.475+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:38:55+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:38:55.476+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:38:55+07:00 Error update author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:38:55.476+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:38:55+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:38:55.477+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:38:55+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:38:55.478+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:38:55+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T13:38:55.479+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:38:55+07:00 Error insert author ","error":"sql: converting argument $3 type: unsupported type repositories.Author, a struct"}
+{"level":"error","ts":"2024-03-15T13:38:55.479+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:38:55+07:00 Error Update: ","error":"sql: converting argument $3 type: unsupported type repositories.Author, a struct"}
+{"level":"info","ts":"2024-03-15T13:40:52.574+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:40:52+07:00 POST /api/v1/books/update"}
+{"level":"info","ts":"2024-03-15T13:40:52.575+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:40:52+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:40:52.747+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:40:52+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T13:40:52.748+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:40:52+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:40:52.802+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:40:52+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:40:52.804+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:40:52+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T13:40:52.807+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:40:52+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:40:52.808+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:40:52+07:00 Error update author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:40:52.809+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:40:52+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:40:52.810+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:40:52+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:40:52.811+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:40:52+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T13:40:52.813+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:40:52+07:00 Error insert author ","error":"pq: column \"author\" of relation \"book\" does not exist"}
+{"level":"error","ts":"2024-03-15T13:40:52.814+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:40:52+07:00 Error Update: ","error":"pq: column \"author\" of relation \"book\" does not exist"}
+{"level":"info","ts":"2024-03-15T13:41:09.183+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 POST /api/v1/books/update"}
+{"level":"info","ts":"2024-03-15T13:41:09.184+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:41:09.241+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T13:41:09.241+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:41:09.280+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:41:09.281+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T13:41:09.282+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:41:09.284+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error update author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:41:09.284+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:41:09.285+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:41:09.286+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T13:41:09.410+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Insert successfully author"}
+{"level":"info","ts":"2024-03-15T13:41:09.410+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:41:09.412+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T13:41:09.412+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:41:09.413+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:41:09.413+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T13:41:09.415+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:41:09.416+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error update author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:41:09.417+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:41:09.419+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:41:09.419+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:41:09+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T13:41:09.421+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:41:09+07:00 Insert successfully author"}
+{"level":"info","ts":"2024-03-15T13:42:15.176+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 POST /api/v1/books/update"}
+{"level":"info","ts":"2024-03-15T13:42:15.177+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:42:15.238+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T13:42:15.238+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:42:15.275+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:42:15.276+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:42:15+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"error","ts":"2024-03-15T13:42:15.279+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:42:15+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:42:15.279+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:42:15+07:00 Error update author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:42:15.280+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:42:15.280+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:42:15.281+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:42:15+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T13:42:15.283+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:42:15+07:00 Insert successfully author"}
+{"level":"info","ts":"2024-03-15T13:43:10.169+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:10+07:00 DELETE /api/v1/books/delete"}
+{"level":"info","ts":"2024-03-15T13:43:10.169+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:10+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:43:10.350+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:10+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T13:43:10.352+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:10+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:43:10.461+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:10+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:43:10.462+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:10+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T13:43:10.465+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:10+07:00 Insert successfully author"}
+{"level":"info","ts":"2024-03-15T13:43:17.966+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T13:43:17.966+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T13:43:17.966+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T13:43:17.967+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:43:17.967+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:43:17.968+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:17+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T13:43:17.968+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:43:17.968+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:43:17.969+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:17+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T13:43:17.969+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T13:43:17.969+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:17+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:43:17.971+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:17+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T13:43:55.634+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:55+07:00 POST /api/v1/books/add"}
+{"level":"info","ts":"2024-03-15T13:43:55.634+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:55+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:43:55.635+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:55+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:43:55.636+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:55+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T13:43:55.639+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:55+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:43:55.640+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:55+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:43:55.641+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:55+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T13:43:55.643+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:43:55+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:43:55.643+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:55+07:00 Error ","error":"no author found"}
+{"level":"error","ts":"2024-03-15T13:43:55.647+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:55+07:00 Error insert author ","error":"sql: converting argument $4 type: unsupported type repositories.Author, a struct"}
+{"level":"error","ts":"2024-03-15T13:43:55.647+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:43:55+07:00 Error Insert: ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:56:48.367+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:56:48+07:00 POST /api/v1/books/add"}
+{"level":"info","ts":"2024-03-15T13:56:48.368+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:56:48+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:56:48.435+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:56:48+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:56:48.436+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:56:48+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T13:56:48.472+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:56:48+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:56:48.473+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:56:48+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:56:48.473+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:56:48+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T13:56:48.476+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:56:48+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:56:48.477+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:56:48+07:00 Error ","error":"no author found"}
+{"level":"error","ts":"2024-03-15T13:56:48.605+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:56:48+07:00 Error insert books ","error":"pq: insert or update on table \"book\" violates foreign key constraint \"fk_author\""}
+{"level":"error","ts":"2024-03-15T13:56:48.606+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:56:48+07:00 Error Insert: ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:57:22.628+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:57:22+07:00 POST /api/v1/books/add"}
+{"level":"info","ts":"2024-03-15T13:57:22.629+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:57:22+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:57:22.630+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:57:22+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:57:22.630+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:57:22+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T13:57:22.631+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:57:22+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:57:22.632+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:57:22+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:57:22.632+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:57:22+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T13:57:22.633+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:57:22+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:57:22.634+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:57:22+07:00 Error ","error":"no author found"}
+{"level":"error","ts":"2024-03-15T13:57:22.636+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:57:22+07:00 Error insert books ","error":"pq: insert or update on table \"book\" violates foreign key constraint \"fk_author\""}
+{"level":"error","ts":"2024-03-15T13:57:22.637+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:57:22+07:00 Error Insert: ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:59:17.584+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:59:17+07:00 POST /api/v1/books/add"}
+{"level":"info","ts":"2024-03-15T13:59:17.585+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:59:17+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T13:59:17.668+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:59:17+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:59:17.668+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T13:59:17.715+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:59:17.715+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:59:17.716+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:59:17+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T13:59:17.720+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:59:17+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:59:17.720+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error ","error":"no author found"}
+{"level":"error","ts":"2024-03-15T13:59:17.722+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T13:59:17.723+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T13:59:17.723+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:59:17+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T13:59:17.725+0700","caller":"logger/logger.go:61","msg":"2024-03-15T13:59:17+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T13:59:17.725+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error ","error":"no author found"}
+{"level":"error","ts":"2024-03-15T13:59:17.729+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error insert books ","error":"pq: insert or update on table \"book\" violates foreign key constraint \"fk_author\""}
+{"level":"error","ts":"2024-03-15T13:59:17.730+0700","caller":"logger/logger.go:67","msg":"2024-03-15T13:59:17+07:00 Error Insert: ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T14:00:40.708+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:00:40+07:00 POST /api/v1/books/add"}
+{"level":"info","ts":"2024-03-15T14:00:40.709+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:00:40+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T14:00:40.785+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:00:40+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:00:40.786+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:00:40+07:00 Error ","error":"no books found"}
+{"level":"info","ts":"2024-03-15T14:00:40.787+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:00:40+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T14:00:40.833+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:00:40+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:00:40.834+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:00:40+07:00 Error ","error":"no author found"}
+{"level":"error","ts":"2024-03-15T14:00:40.837+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:00:40+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"error","ts":"2024-03-15T14:00:40.838+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:00:40+07:00 Error insert author ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T14:00:40.838+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:00:40+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T14:00:40.839+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:00:40+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:00:40.840+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:00:40+07:00 Error ","error":"no author found"}
+{"level":"error","ts":"2024-03-15T14:00:40.846+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:00:40+07:00 Error insert books ","error":"pq: insert or update on table \"book\" violates foreign key constraint \"fk_author\""}
+{"level":"error","ts":"2024-03-15T14:00:40.847+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:00:40+07:00 Error Insert: ","error":"pq: invalid input syntax for type date: \"\""}
+{"level":"info","ts":"2024-03-15T14:03:04.808+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:04+07:00 POST /api/v1/books/add"}
+{"level":"info","ts":"2024-03-15T14:03:04.809+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:04+07:00 Querying SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1"}
+{"level":"info","ts":"2024-03-15T14:03:04.873+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:04+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:03:04.874+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:03:04+07:00 Error ","error":"no books found"}
+{"level":"info","ts":"2024-03-15T14:03:04.874+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:04+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T14:03:04.912+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:04+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:03:04.914+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:03:04+07:00 Error ","error":"no author found"}
+{"level":"info","ts":"2024-03-15T14:03:05.034+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:05+07:00 Insert successfully author"}
+{"level":"info","ts":"2024-03-15T14:03:05.035+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:05+07:00 Insert successfully author"}
+{"level":"info","ts":"2024-03-15T14:03:05.035+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:05+07:00 Querying SELECT id,name,birth_date from Author WHERE \"name\"=$1"}
+{"level":"info","ts":"2024-03-15T14:03:05.036+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:05+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T14:03:05.042+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:05+07:00 Insert successfully books"}
+{"level":"info","ts":"2024-03-15T14:03:11.974+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T14:03:11.974+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Querying SELECT isbn,name,id_author,publish_year from Book"}
+{"level":"info","ts":"2024-03-15T14:03:11.975+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T14:03:11.975+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T14:03:11.976+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:03:11.977+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:03:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T14:03:11.977+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T14:03:11.978+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:03:11.978+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:03:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T14:03:11.978+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T14:03:11.979+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T14:03:11.980+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:03:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+{"level":"info","ts":"2024-03-15T14:03:11.980+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
+{"level":"info","ts":"2024-03-15T14:03:11.981+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Query successfully"}
