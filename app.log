@@ -304,3 +304,16 @@
 {"level":"error","ts":"2024-03-15T14:03:11.980+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:03:11+07:00 Error ","error":"sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
 {"level":"info","ts":"2024-03-15T14:03:11.980+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Querying SELECT id,name,birth_date from Author WHERE \"id\"=$1"}
 {"level":"info","ts":"2024-03-15T14:03:11.981+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:03:11+07:00 Query successfully"}
+{"level":"info","ts":"2024-03-15T14:45:12.045+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:45:12+07:00 Insert mock data"}
+{"level":"error","ts":"2024-03-15T14:45:12.087+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:45:12+07:00 Error while inserting mock data","error":"pq: column \"author\" of relation \"book\" does not exist"}
+{"level":"error","ts":"2024-03-15T14:45:12.088+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:45:12+07:00 Error while inserting mock data","error":"pq: column \"author\" of relation \"book\" does not exist"}
+{"level":"error","ts":"2024-03-15T14:45:12.089+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:45:12+07:00 Error while inserting mock data","error":"pq: column \"author\" of relation \"book\" does not exist"}
+{"level":"error","ts":"2024-03-15T14:45:12.089+0700","caller":"logger/logger.go:67","msg":"2024-03-15T14:45:12+07:00 Error while inserting mock data","error":"pq: column \"author\" of relation \"book\" does not exist"}
+{"level":"info","ts":"2024-03-15T14:46:20.468+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:46:20+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T14:50:18.492+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:50:18+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T14:57:38.702+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:57:38+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T14:59:33.404+0700","caller":"logger/logger.go:61","msg":"2024-03-15T14:59:33+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T15:00:57.198+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:00:57+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T15:03:23.681+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:03:23+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T15:04:25.751+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:04:25+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T15:05:42.833+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:05:42+07:00 Insert mock data"}
