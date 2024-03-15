@@ -81,3 +81,4 @@
 {"level":"info","ts":"2024-03-15T16:54:21.374+0700","caller":"logger/logger.go:61","msg":"2024-03-15T16:54:21+07:00 Querying SELECT isbn,name,author,publish_year from Book"}
 {"level":"info","ts":"2024-03-15T16:54:21.438+0700","caller":"logger/logger.go:61","msg":"2024-03-15T16:54:21+07:00 Query successfully"}
 {"level":"info","ts":"2024-03-15T17:01:07.567+0700","caller":"logger/logger.go:61","msg":"2024-03-15T17:01:07+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T20:14:42.368+0700","caller":"logger/logger.go:61","msg":"2024-03-15T20:14:42+07:00 Insert mock data"}
