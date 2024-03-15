@@ -317,3 +317,11 @@
 {"level":"info","ts":"2024-03-15T15:03:23.681+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:03:23+07:00 Insert mock data"}
 {"level":"info","ts":"2024-03-15T15:04:25.751+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:04:25+07:00 Insert mock data"}
 {"level":"info","ts":"2024-03-15T15:05:42.833+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:05:42+07:00 Insert mock data"}
+{"level":"info","ts":"2024-03-15T15:26:30.285+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:26:30+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T15:26:30.285+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:26:30+07:00 Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.id = ba.id_book"}
+{"level":"error","ts":"2024-03-15T15:26:30.349+0700","caller":"logger/logger.go:67","msg":"2024-03-15T15:26:30+07:00 Error","error":"pq: column b.id does not exist"}
+{"level":"info","ts":"2024-03-15T15:28:02.542+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:28:02+07:00 GET /api/v1/books"}
+{"level":"info","ts":"2024-03-15T15:28:02.542+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:28:02+07:00 Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book"}
+{"level":"info","ts":"2024-03-15T15:28:02.609+0700","caller":"logger/logger.go:61","msg":"2024-03-15T15:28:02+07:00 Query successfully"}
+{"level":"error","ts":"2024-03-15T15:28:02.610+0700","caller":"logger/logger.go:67","msg":"2024-03-15T15:28:02+07:00 Error ","error":"no books found"}
+{"level":"error","ts":"2024-03-15T15:28:02.610+0700","caller":"logger/logger.go:67","msg":"2024-03-15T15:28:02+07:00 Error GetAllBooks: ","error":"No books found"}
