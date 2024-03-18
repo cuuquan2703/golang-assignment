@@ -3,7 +3,6 @@ package logger
 import (
 	"log"
 	"os"
-	"time"
 
 	"go.uber.org/zap"
 	"go.uber.org/zap/zapcore"
@@ -19,7 +18,7 @@ var CLogger *zap.Logger
 
 func initCMD() {
 	var err error
-	CLogger, err = zap.NewProduction()
+	CLogger, err = zap.NewDevelopment()
 	if err != nil {
 		log.Fatalf("Failed to initialize logger")
 	}
@@ -27,7 +26,7 @@ func initCMD() {
 }
 
 func initFile() {
-	encoderConfig := zap.NewProductionEncoderConfig()
+	encoderConfig := zap.NewDevelopmentEncoderConfig()
 	encoderConfig.EncodeTime = zapcore.ISO8601TimeEncoder
 
 	logFile, err := os.OpenFile("app.log", os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0644)
@@ -36,7 +35,7 @@ func initFile() {
 	}
 
 	core := zapcore.NewCore(
-		zapcore.NewJSONEncoder(encoderConfig),
+		zapcore.NewConsoleEncoder(encoderConfig),
 		zapcore.AddSync(logFile),
 		zapcore.InfoLevel,
 	)
@@ -56,13 +55,11 @@ func CreateLog() *Logger {
 }
 
 func (L Logger) Info(content string) {
-	t := time.Now().Format(time.RFC3339)
-	L.CmdLogger.Info(t + " " + content)
-	L.FileLogger.Info(t + " " + content)
+	L.CmdLogger.Info(content)
+	L.FileLogger.Info(content)
 }
 
 func (L Logger) Error(content string, err error) {
-	t := time.Now().Format(time.RFC3339)
-	L.CmdLogger.Error(t+" "+content, zap.Error(err))
-	L.FileLogger.Error(t+" "+content, zap.Error(err))
+	L.CmdLogger.Error(content, zap.Error(err))
+	L.FileLogger.Error(content, zap.Error(err))
 }
