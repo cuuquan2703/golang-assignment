@@ -1,0 +1,10 @@
+2024-03-18T11:05:10.396+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T11:05:10.396+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T11:05:10.397+0700	ERROR	logger/logger.go:64	Error	{"error": "sql: Scan error on column index 3, name \"author\": converting driver.Value type string (\"Grahahm\") to a int: invalid syntax"}
+2024-03-18T11:07:20.415+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T11:07:20.416+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T11:07:20.416+0700	ERROR	logger/logger.go:64	Error	{"error": "sql: Scan error on column index 3, name \"author\": converting driver.Value type string (\"Grahahm\") to a int: invalid syntax"}
+2024-03-18T11:08:43.164+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T11:08:43.164+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T11:09:23.201+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T11:09:23.201+0700	INFO	logger/logger.go:59	Query successfully
