@@ -30,6 +30,10 @@ func TestGetAllBooks(t *testing.T) {
 			DB:    db,
 			Table: "author",
 		},
+		BookAuthorRepo: repositories.BookAuthorRepository{
+			DB:    db,
+			Table: "book_author",
+		},
 	}
 	expected := []repositories.Book{
 		{ISBN: "19123450", Name: "Atomic", Author: repositories.Author{Id: 1, Name: "Thmoas", BirthDate: "17-04-2002"}, PublishYear: 2022},
@@ -40,14 +44,19 @@ func TestGetAllBooks(t *testing.T) {
 		AddRow("19123450", "Atomic", 1, 2022).
 		AddRow("12235670", "Skinner", 2, 2001).
 		AddRow("12223900", "Short", 3, 1998)
-	Authorrows := sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+	sqlmock.NewRows([]string{"id", "name", "birth_date"}).
 		AddRow(1, "Thmoas", "17-04-2002").
 		AddRow(2, "Albert", "17-04-2002").
 		AddRow(3, "Vicotr", "17-04-2002")
-	mock.ExpectQuery("SELECT isbn,name,author,publish_year from Book").WillReturnRows(Bookrows)
-	mock.ExpectQuery("SELECT id,name,birth_date from Author").WillReturnRows(Authorrows)
-	mock.ExpectQuery("SELECT (.*)").WillReturnRows(Authorrows)
-	mock.ExpectQuery("SELECT (.*)").WillReturnRows(Authorrows)
+	sqlmock.NewRows([]string{"id_book", "id_author"}).
+		AddRow("19123450", 1).AddRow("12235670", 2).AddRow("12223900", 3)
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book`)).WillReturnRows(Bookrows)
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).WithArgs(1).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+		AddRow(1, "Thmoas", "17-04-2002"))
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).WithArgs(2).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+		AddRow(2, "Albert", "17-04-2002"))
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).WithArgs(3).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+		AddRow(3, "Vicotr", "17-04-2002"))
 
 	book, err := repo.GetAllBooks()
 	if err != nil {
@@ -72,6 +81,10 @@ func TestGetByISBN(t *testing.T) {
 			DB:    db,
 			Table: "author",
 		},
+		BookAuthorRepo: repositories.BookAuthorRepository{
+			DB:    db,
+			Table: "book_author",
+		},
 	}
 	expected := []repositories.Book{
 		{ISBN: "12223900", Name: "Short", Author: repositories.Author{Id: 3, Name: "Vicotr", BirthDate: "17-04-2002"}, PublishYear: 1998},
@@ -84,7 +97,11 @@ func TestGetByISBN(t *testing.T) {
 		AddRow(1, "Thmoas", "17-04-2002").
 		AddRow(2, "Albert", "17-04-2002").
 		AddRow(3, "Vicotr", "17-04-2002")
-	mock.ExpectQuery(regexp.QuoteMeta("SELECT isbn,name,id_author,publish_year from Book where isbn=$1")).WithArgs("12223900").WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
+	sqlmock.NewRows([]string{"id_book", "id_author"}).
+		AddRow("19123450", 1).AddRow("12235670", 2).AddRow("12223900", 3)
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+	JOIN book_author ba ON b.isbn = ba.id_book 
+	WHERE b.isbn = $1`)).WithArgs("12223900").WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
 		AddRow("12223900", "Short", 3, 1998))
 	mock.ExpectQuery(regexp.QuoteMeta("SELECT id,name,birth_date from Author WHERE id=$1")).WithArgs(3).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
 		AddRow(3, "Vicotr", "17-04-2002"))
@@ -112,9 +129,13 @@ func TestGetByAuthor(t *testing.T) {
 			DB:    db,
 			Table: "author",
 		},
+		BookAuthorRepo: repositories.BookAuthorRepository{
+			DB:    db,
+			Table: "book_author",
+		},
 	}
 	expected := []repositories.Book{
-		{ISBN: "12235670", Name: "Skinner", Author: repositories.Author{Id: 2, Name: "Albert", BirthDate: "17-04-2002"}, PublishYear: 2001},
+		{ISBN: "12223900", Name: "Short", Author: repositories.Author{Id: 3, Name: "Vicotr", BirthDate: "17-04-2002"}, PublishYear: 1998},
 	}
 	sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
 		AddRow("19123450", "Atomic", 1, 2022).
@@ -124,12 +145,18 @@ func TestGetByAuthor(t *testing.T) {
 		AddRow(1, "Thmoas", "17-04-2002").
 		AddRow(2, "Albert", "17-04-2002").
 		AddRow(3, "Vicotr", "17-04-2002")
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).WithArgs("Albert").WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
-		AddRow(2, "Albert", "17-04-2002"))
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,id_author,publish_year from Book where "id_author"=$1`)).WithArgs(2).WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
-		AddRow("12235670", "Skinner", 2, 2001))
+	sqlmock.NewRows([]string{"id_book", "id_author"}).
+		AddRow("19123450", 1).AddRow("12235670", 2).AddRow("12223900", 3)
 
-	book, err := repo.GetByAuthor("Albert")
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+	JOIN book_author ba ON b.isbn= ba.id_book 
+	JOIN author a ON ba.id_author = a.id 
+	WHERE a.name = $1`)).WithArgs("Vicotr").WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
+		AddRow("12223900", "Short", 3, 1998))
+
+	mock.ExpectQuery(regexp.QuoteMeta("SELECT id,name,birth_date from Author WHERE id=$1")).WithArgs(3).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+		AddRow(3, "Vicotr", "17-04-2002"))
+	book, err := repo.GetByAuthor("Vicotr")
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -152,6 +179,10 @@ func TestGetInRange(t *testing.T) {
 			DB:    db,
 			Table: "author",
 		},
+		BookAuthorRepo: repositories.BookAuthorRepository{
+			DB:    db,
+			Table: "book_author",
+		},
 	}
 	expected := []repositories.Book{
 		{ISBN: "19123450", Name: "Atomic", Author: repositories.Author{Id: 1, Name: "Thmoas", BirthDate: "17-04-2002"}, PublishYear: 2022},
@@ -165,12 +196,18 @@ func TestGetInRange(t *testing.T) {
 		AddRow(1, "Thmoas", "17-04-2002").
 		AddRow(2, "Albert", "17-04-2002").
 		AddRow(3, "Vicotr", "17-04-2002")
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,id_author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1`)).WithArgs(1999, 2023).WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
+	sqlmock.NewRows([]string{"id_book", "id_author"}).
+		AddRow("19123450", 1).AddRow("12235670", 2).AddRow("12223900", 3)
+
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+	JOIN book_author ba ON b.isbn = ba.id_book  
+	WHERE b.publish_year<=$2 and b.publish_year>=$1`)).WithArgs(1999, 2023).WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
 		AddRow("19123450", "Atomic", 1, 2022).
 		AddRow("12235670", "Skinner", 2, 2001))
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).WithArgs(1).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+
+	mock.ExpectQuery(regexp.QuoteMeta("SELECT id,name,birth_date from Author WHERE id=$1")).WithArgs(1).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
 		AddRow(1, "Thmoas", "17-04-2002"))
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).WithArgs(2).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+	mock.ExpectQuery(regexp.QuoteMeta("SELECT id,name,birth_date from Author WHERE id=$1")).WithArgs(2).WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
 		AddRow(2, "Albert", "17-04-2002"))
 
 	book, err := repo.GetInRange(1999, 2023)

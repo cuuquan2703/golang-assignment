@@ -85,7 +85,6 @@ func (repo BookRepository) GetAllBooks() ([]Book, error) {
 
 		book := Book{}
 		err := row.Scan(&book.ISBN, &book.Name, &book.Author.Id, &book.PublishYear)
-		fmt.Println(book)
 
 		if err != nil {
 			L.Error("Error", err)
@@ -131,10 +130,10 @@ func (repo BookRepository) GetByAuthor(authorName string) ([]Book, error) {
 	books := []Book{}
 	cmd := `SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
 			JOIN book_author ba ON b.isbn= ba.id_book 
-			JOIN authors a ON ba.id_author = a.id 
+			JOIN author a ON ba.id_author = a.id 
 			WHERE a.name = $1`
 	L.Info("Querying " + cmd)
-	row, err := repo.DB.Query(cmd, author.Id)
+	row, err := repo.DB.Query(cmd, authorName)
 	if err != nil {
 		L.Error("Error", err)
 	} else {
@@ -153,6 +152,7 @@ func (repo BookRepository) GetByAuthor(authorName string) ([]Book, error) {
 			L.Error("Error ", err)
 			return nil, err
 		}
+		author, _ := repo.AuthorRepo.GetByID(book.Author.Id)
 		book.Author = author
 		books = append(books, book)
 
