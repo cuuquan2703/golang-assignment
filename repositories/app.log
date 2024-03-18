@@ -1,0 +1,177 @@
+2024-03-18T14:25:58.136+0700	ERROR	logger/logger.go:64	Error loading .env file:	{"error": "open .env: The system cannot find the file specified."}
+2024-03-18T14:25:58.137+0700	ERROR	logger/logger.go:64	Error loading .env file:	{"error": "open .env: The system cannot find the file specified."}
+2024-03-18T14:25:58.138+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book
+2024-03-18T14:25:58.138+0700	ERROR	logger/logger.go:64	Error	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book\" with expected regexp \"SELECT isbn,name,author,publish_year from Book\""}
+2024-03-18T14:50:56.096+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book
+2024-03-18T14:50:56.097+0700	ERROR	logger/logger.go:64	Error	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book\" with expected regexp \"SELECT isbn,name,author,publish_year from Book\""}
+2024-03-18T14:51:17.928+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book
+2024-03-18T14:51:17.928+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:51:17.928+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T14:51:17.928+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:51:17.928+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:1}] was not expected"}
+2024-03-18T14:51:17.928+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T14:51:17.928+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:51:17.929+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:2}] was not expected"}
+2024-03-18T14:51:17.929+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T14:51:17.929+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:51:17.929+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:3}] was not expected"}
+2024-03-18T14:53:16.973+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book
+2024-03-18T14:53:16.973+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:53:16.974+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T14:53:16.974+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:53:16.974+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:1}] was not expected"}
+2024-03-18T14:53:16.974+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T14:53:16.974+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:53:16.974+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:2}] was not expected"}
+2024-03-18T14:53:16.974+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T14:53:16.974+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T14:53:16.974+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:3}] was not expected"}
+2024-03-18T14:54:37.589+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book
+2024-03-18T14:54:37.590+0700	ERROR	logger/logger.go:64	Error	{"error": "all expectations were already fulfilled, call to Query 'SELECT isbn,name,id_author,publish_year from Book' with args [] was not expected"}
+2024-03-18T14:57:56.321+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book
+2024-03-18T14:57:56.321+0700	ERROR	logger/logger.go:64	Error	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book\" with expected regexp \"SELECT isbn,name,author,publish_year from Book\""}
+2024-03-18T15:03:29.464+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T15:03:29.464+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:03:29.464+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:03:29.464+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:03:29.464+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:03:29.464+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:03:29.465+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:2}] was not expected"}
+2024-03-18T15:03:29.465+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:03:29.465+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:03:29.465+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:3}] was not expected"}
+2024-03-18T15:08:38.878+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T15:08:38.878+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:08:38.878+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:08:38.879+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:08:38.879+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:08:38.879+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:08:38.879+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:2}] was not expected"}
+2024-03-18T15:08:38.879+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:08:38.879+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:08:38.879+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:3}] was not expected"}
+2024-03-18T15:09:25.054+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T15:09:25.054+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:09:25.054+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:09:25.054+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:09:25.054+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:09:25.054+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:09:25.055+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:2}] was not expected"}
+2024-03-18T15:09:25.055+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:09:25.055+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:09:25.055+0700	ERROR	logger/logger.go:64	Error 	{"error": "all expectations were already fulfilled, call to Query 'SELECT id,name,birth_date from Author WHERE \"id\"=$1' with args [{Name: Ordinal:1 Value:3}] was not expected"}
+2024-03-18T15:11:22.357+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T15:11:22.358+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:11:22.358+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:11:22.358+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:11:22.359+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:11:22.359+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:11:22.359+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT id,name,birth_date from Author WHERE \"id\"=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=$1\""}
+2024-03-18T15:11:22.359+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:11:22.359+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:11:22.359+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT id,name,birth_date from Author WHERE \"id\"=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=$1\""}
+2024-03-18T15:12:04.868+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T15:12:04.868+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:12:04.868+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:12:04.868+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:12:04.869+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT id,name,birth_date from Author WHERE \"id\"=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=$1\""}
+2024-03-18T15:12:04.869+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:12:04.869+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:12:04.869+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT id,name,birth_date from Author WHERE \"id\"=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=$1\""}
+2024-03-18T15:12:04.869+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:12:04.869+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:12:04.869+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT id,name,birth_date from Author WHERE \"id\"=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=$1\""}
+2024-03-18T15:13:56.191+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T15:13:56.192+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:13:56.192+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:13:56.192+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:13:56.192+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:13:56.192+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:13:56.192+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:13:56.192+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:14:16.689+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-18T15:14:16.689+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:14:16.689+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:14:16.689+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:14:16.689+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:14:16.689+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:14:16.690+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:14:16.690+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:16:31.979+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "isbn"=$1
+2024-03-18T15:16:31.980+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:16:31.980+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1\" with expected regexp \"SELECT isbn,name,author,publish_year from Book\""}
+2024-03-18T15:17:18.770+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "isbn"=$1
+2024-03-18T15:17:18.770+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:17:18.770+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:17:18.770+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:18:06.781+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "isbn"=$1
+2024-03-18T15:18:06.782+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:18:06.782+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:18:06.782+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:18:21.226+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "isbn"=$1
+2024-03-18T15:18:21.226+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:18:21.226+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:18:21.226+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:25:27.320+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "isbn"=$1
+2024-03-18T15:25:27.321+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:25:27.321+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book where \"isbn\"=$1\" with expected regexp \"SELECT isbn,name,id_author,publish_year from Book where isbn=$1\""}
+2024-03-18T15:25:52.010+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:25:52.010+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:25:52.010+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book where isbn=$1\" with expected regexp \"SELECT isbn,name,id_author,publish_year from Book where isbn=$1\""}
+2024-03-18T15:26:26.231+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:26:26.231+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:26:26.231+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book where isbn=$1\" with expected regexp \"SELECT * from Book where isbn=$1\""}
+2024-03-18T15:31:09.155+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:31:09.156+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:31:09.156+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:31:09.156+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:33:35.195+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:33:35.195+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:33:35.195+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
+2024-03-18T15:33:35.195+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:33:35.195+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT id,name,birth_date from Author WHERE \"id\"=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=\\$1\""}
+2024-03-18T15:33:56.311+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:33:56.311+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:33:56.311+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-18T15:33:56.311+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:33:56.311+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query 'SELECT id,name,birth_date from Author WHERE id=$1', arguments do not match: argument 0 expected [int64 - 3] does not match actual [int64 - 2]"}
+2024-03-18T15:34:33.160+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:34:33.160+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:34:33.160+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-18T15:34:33.160+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:35:09.528+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:35:09.528+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:35:09.528+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-18T15:35:09.528+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:35:09.528+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query 'SELECT id,name,birth_date from Author WHERE id=$1', arguments do not match: argument 0 expected [int64 - 2] does not match actual [int64 - 3]"}
+2024-03-18T15:35:27.911+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-18T15:35:27.912+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:35:27.912+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-18T15:35:27.912+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:38:53.824+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-18T15:38:53.824+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:38:53.824+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT id,name,birth_date from Author WHERE \"name\"=$1\" with expected regexp \"SELECT isbn,name,id_author,publish_year from Book where \"id_author\"=\\$1\""}
+2024-03-18T15:38:53.824+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "id_author"=$1
+2024-03-18T15:38:53.824+0700	ERROR	logger/logger.go:64	Error	{"error": "Query 'SELECT isbn,name,id_author,publish_year from Book where \"id_author\"=$1', arguments do not match: argument 0 expected [int64 - 2] does not match actual [int64 - 0]"}
+2024-03-18T15:38:53.824+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query 'SELECT isbn,name,id_author,publish_year from Book where \"id_author\"=$1', arguments do not match: argument 0 expected [int64 - 2] does not match actual [int64 - 0]"}
+2024-03-18T15:39:22.091+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-18T15:39:22.091+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:39:22.091+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "id_author"=$1
+2024-03-18T15:39:22.091+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:40:00.038+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-18T15:40:00.038+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:40:00.038+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "id_author"=$1
+2024-03-18T15:40:00.038+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:40:20.998+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-18T15:40:20.998+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:40:20.998+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "id_author"=$1
+2024-03-18T15:40:20.998+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:44:58.098+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-18T15:44:58.099+0700	ERROR	logger/logger.go:64	Error	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book where \"publish_year\"<=$2 and \"publish_year\">=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=\\$1\""}
+2024-03-18T15:44:58.099+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query: could not match actual sql: \"SELECT isbn,name,id_author,publish_year from Book where \"publish_year\"<=$2 and \"publish_year\">=$1\" with expected regexp \"SELECT id,name,birth_date from Author WHERE id=\\$1\""}
+2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Query successfully

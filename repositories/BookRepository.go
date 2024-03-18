@@ -3,6 +3,7 @@ package repositories
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	"os"
 	"server/logger"
 
@@ -16,12 +17,14 @@ type Book struct {
 	ISBN        string `json:"isbn"`
 	Name        string `json:"name"`
 	PublishYear int    `json:"publish_year"`
-	Author      Author `json:"id_author"`
+	Author      Author `json:"author"`
 }
 
 type BookRepository struct {
-	DB    *sql.DB
-	Table string
+	DB             *sql.DB
+	Table          string
+	AuthorRepo     AuthorRepository
+	BookAuthorRepo BookAuthorRepository
 }
 
 var L = logger.CreateLog()
@@ -53,11 +56,19 @@ func NewBookRepository() (*BookRepository, error) {
 	return &BookRepository{
 		DB:    db,
 		Table: "Book",
+		AuthorRepo: AuthorRepository{
+			DB:    db,
+			Table: "author",
+		},
+		BookAuthorRepo: BookAuthorRepository{
+			DB:    db,
+			Table: "book_author",
+		},
 	}, nil
 }
 
-var AuthorRepo, _ = NewAuthorRepository()
-var BookAuthorRepo, _ = NewBookAuthorRepository()
+// var AuthorRepo, _ = NewAuthorRepository()
+// var repo.BookAuthorRepo, _ = Newrepo.BookAuthorRepository()
 
 func (repo BookRepository) GetAllBooks() ([]Book, error) {
 	books := []Book{}
@@ -71,13 +82,16 @@ func (repo BookRepository) GetAllBooks() ([]Book, error) {
 	}
 
 	for row.Next() {
+
 		book := Book{}
 		err := row.Scan(&book.ISBN, &book.Name, &book.Author.Id, &book.PublishYear)
+		fmt.Println(book)
+
 		if err != nil {
 			L.Error("Error", err)
 			return nil, err
 		}
-		author, _ := AuthorRepo.GetByID(book.Author.Id)
+		author, _ := repo.AuthorRepo.GetByID(book.Author.Id)
 		book.Author = author
 		books = append(books, book)
 	}
@@ -108,19 +122,19 @@ func (repo BookRepository) GetByISBN(isbn string) (Book, error) {
 		L.Error("Error ", err)
 		return book, errors.New("Something went wrong")
 	}
-	author, _ := AuthorRepo.GetByID(book.Author.Id)
+	author, _ := repo.AuthorRepo.GetByID(book.Author.Id)
 	book.Author = author
 	return book, err
 }
 
-func (repo BookRepository) GetByAuthor(author string) ([]Book, error) {
+func (repo BookRepository) GetByAuthor(authorName string) ([]Book, error) {
 	books := []Book{}
 	cmd := `SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
 			JOIN book_author ba ON b.isbn= ba.id_book 
 			JOIN authors a ON ba.id_author = a.id 
 			WHERE a.name = $1`
 	L.Info("Querying " + cmd)
-	row, err := repo.DB.Query(cmd, author)
+	row, err := repo.DB.Query(cmd, author.Id)
 	if err != nil {
 		L.Error("Error", err)
 	} else {
@@ -134,12 +148,11 @@ func (repo BookRepository) GetByAuthor(author string) ([]Book, error) {
 	defer row.Close()
 	for row.Next() {
 		book := Book{}
-		err := row.Scan(&book.ISBN, &book.Name, &book.Author, &book.PublishYear)
+		err := row.Scan(&book.ISBN, &book.Name, &book.Author.Id, &book.PublishYear)
 		if err != nil {
 			L.Error("Error ", err)
 			return nil, err
 		}
-		author, _ := AuthorRepo.GetByID(book.Author.Id)
 		book.Author = author
 		books = append(books, book)
 
@@ -173,12 +186,12 @@ func (repo BookRepository) GetInRange(year1, year2 int) ([]Book, error) {
 	defer row.Close()
 	for row.Next() {
 		book := Book{}
-		err := row.Scan(&book.ISBN, &book.Name, &book.Author, &book.PublishYear)
+		err := row.Scan(&book.ISBN, &book.Name, &book.Author.Id, &book.PublishYear)
 		if err != nil {
 			L.Error("Error ", err)
 			return nil, err
 		}
-		author, _ := AuthorRepo.GetByID(book.Author.Id)
+		author, _ := repo.AuthorRepo.GetByID(book.Author.Id)
 		book.Author = author
 		books = append(books, book)
 
@@ -192,19 +205,19 @@ func (repo BookRepository) GetInRange(year1, year2 int) ([]Book, error) {
 	return books, err
 }
 func (repo BookRepository) Insert(data Book) (sql.Result, error) {
-	author, err := AuthorRepo.GetByName(data.Author.Name)
+	author, err := repo.AuthorRepo.GetByName(data.Author.Name)
 	if author == (Author{}) {
-		_, err = AuthorRepo.Insert(data.Author.Name)
+		_, err = repo.AuthorRepo.Insert(data.Author.Name)
 		if err != nil {
 			L.Error("Error insert author ", err)
 		} else {
 			L.Info("Insert successfully author")
 		}
 	}
-	data.Author, _ = AuthorRepo.GetByName(data.Author.Name)
+	data.Author, _ = repo.AuthorRepo.GetByName(data.Author.Name)
 
 	res, err2 := repo.DB.Exec(" INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);", data.ISBN, data.Name, data.PublishYear)
-	_, err3 := BookAuthorRepo.Insert(data.ISBN, data.Author.Id)
+	_, err3 := repo.BookAuthorRepo.Insert(data.ISBN, data.Author.Id)
 	if err2 != nil {
 		L.Error("Error insert books ", err2)
 	} else {
@@ -219,7 +232,7 @@ func (repo BookRepository) Insert(data Book) (sql.Result, error) {
 }
 
 func (repo BookRepository) Delete(data Book) (sql.Result, error) {
-	_, err1 := BookAuthorRepo.Delete(data.ISBN)
+	_, err1 := repo.BookAuthorRepo.Delete(data.ISBN)
 	if err1 != nil {
 		L.Error("Error Delete author ", err1)
 	} else {
@@ -235,16 +248,12 @@ func (repo BookRepository) Delete(data Book) (sql.Result, error) {
 }
 
 func (repo BookRepository) Update(data Book) (sql.Result, error) {
-	_, err := AuthorRepo.Update(data.Author)
-	if err != nil {
-		L.Error("Error update author ", err)
-	}
-	data.Author, _ = AuthorRepo.GetByID(data.Author.Id)
-	res, err2 := repo.DB.Exec("UPDATE Book SET name = $1, publish_year = $2, id_author = $3 WHERE isbn = $4", data.Name, data.PublishYear, data.Author.Id, data.ISBN)
+	fmt.Println(data)
+	res, err2 := repo.DB.Exec("UPDATE Book SET name = $1, publish_year = $2 WHERE isbn = $3", data.Name, data.PublishYear, data.ISBN)
 	if err2 != nil {
-		L.Error("Error insert author ", err2)
+		L.Error("Error update book ", err2)
 	} else {
-		L.Info("Insert successfully author")
+		L.Info("update successfully book")
 	}
 	return res, err2
 }

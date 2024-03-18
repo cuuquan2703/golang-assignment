@@ -65,7 +65,7 @@ func (repo AuthorRepository) GetAllAuthors() ([]Author, error) {
 
 func (repo AuthorRepository) GetByID(id int) (Author, error) {
 	author := Author{}
-	cmd := `SELECT id,name,birth_date from Author WHERE "id"=$1`
+	cmd := `SELECT id,name,birth_date from Author WHERE id=$1`
 	L.Info("Querying " + cmd)
 	row := repo.DB.QueryRow(cmd, id)
 	L.Info("Query successfully")

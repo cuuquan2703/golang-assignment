@@ -1,3 +1,0 @@
-2024-03-18T09:19:05.879+0700	INFO	logger/logger.go:59	GET /api/v1/books
-2024-03-18T09:19:05.879+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book
-2024-03-18T09:19:05.882+0700	ERROR	logger/logger.go:64	Error	{"error": "pq: relation \"book_author\" does not exist"}
