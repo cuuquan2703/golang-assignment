@@ -68,7 +68,7 @@ func (repo BookRepository) GetAllBooks() ([]Book, error) {
 		err := row.Scan(&book.ISBN, &book.Name, &book.Author, &book.PublishYear)
 		if err != nil {
 			L.Error("Error", err)
-			return nil, err
+			return nil, errors.New("No books found")
 		}
 		books = append(books, book)
 	}
@@ -110,7 +110,7 @@ func (repo BookRepository) GetByAuthor(author string) ([]Book, error) {
 
 	if err != nil {
 		L.Error("Error ", err)
-		return nil, err
+		return nil, errors.New("No books found")
 	}
 	defer row.Close()
 	for row.Next() {
@@ -118,7 +118,7 @@ func (repo BookRepository) GetByAuthor(author string) ([]Book, error) {
 		err := row.Scan(&book.ISBN, &book.Name, &book.Author, &book.PublishYear)
 		if err != nil {
 			L.Error("Error ", err)
-			return nil, err
+			return nil, errors.New("No books found")
 		}
 		books = append(books, book)
 
