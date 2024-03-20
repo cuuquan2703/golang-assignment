@@ -162,3 +162,21 @@ func (repo BookRepository) GetInRange(year1, year2 int) ([]Book, error) {
 
 	return books, err
 }
+
+func (repo BookRepository) Update(isbn, name, author string, publish_year int) (sql.Result, error) {
+	cmd := "UPDATE Book SET name = $1, publish_year = $2, author = $3 WHERE isbn = $4"
+	res, err := repo.DB.Exec(cmd, name, publish_year, author, isbn)
+	return res, err
+}
+
+func (repo BookRepository) Delete(isbn string) (sql.Result, error) {
+	cmd := "DELETE FROM Book WHERE isbn = $1"
+	res, err := repo.DB.Exec(cmd, isbn)
+	return res, err
+}
+
+func (repo BookRepository) Insert(isbn, name, author string, publish_year int) (sql.Result, error) {
+	cmd := "INSERT INTO Book (isbn, name, publish_year, author) VALUES ($1, $2, $3, $4)"
+	res, err := repo.DB.Exec(cmd, isbn, name, publish_year, author)
+	return res, err
+}

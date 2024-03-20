@@ -107,7 +107,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		_, err2 := BookRepo.DB.Exec("UPDATE Book SET name = $1, publish_year = $2, author = $3 WHERE isbn = $4", data.Name, data.PublishYear, data.Author, data.ISBN)
+		_, err2 := BookRepo.Update(data.ISBN, data.Name, data.Author, data.PublishYear)
 		if err2 != nil {
 			L.Error("Error: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
@@ -139,7 +139,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		_, err2 := BookRepo.DB.Exec("DELETE FROM Book WHERE isbn = $1", data.ISBN)
+		_, err2 := BookRepo.Delete(data.ISBN)
 		if err2 != nil {
 			L.Error("Error: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
@@ -169,7 +169,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 			return
 		}
 
-		_, err2 := BookRepo.DB.Exec(" INSERT INTO Book (isbn, name, publish_year, author) VALUES ($1, $2, $3, $4);", data.ISBN, data.Name, data.PublishYear, data.Author)
+		_, err2 := BookRepo.Insert(data.ISBN, data.Name, data.Author, data.PublishYear)
 		if err2 != nil {
 			L.Error("Error: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
