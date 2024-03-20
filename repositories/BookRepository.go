@@ -66,7 +66,7 @@ func NewBookRepository() (*BookRepository, error) {
 
 func (repo BookRepository) GetAllBooks() ([]Book, error) {
 	books := []Book{}
-	cmd := `SELECT isbn,name,author,publish_year from Book`
+	cmd := `SELECT isbn,name,id_author,publish_year from Book`
 	L.Info("Querying " + cmd)
 	row, err := repo.DB.Query(cmd)
 	if err != nil {

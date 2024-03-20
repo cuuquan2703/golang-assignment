@@ -1147,3 +1147,82 @@
 2024-03-18T14:19:46.906+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-18T14:19:46.907+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "id"=$1
 2024-03-18T14:19:46.909+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:30:24.323+0700	INFO	logger/logger.go:59	GET /api/v1/books
+2024-03-20T11:30:24.323+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T11:30:24.450+0700	ERROR	logger/logger.go:64	Error	{"error": "pq: column \"author\" does not exist"}
+2024-03-20T11:32:40.070+0700	INFO	logger/logger.go:59	GET /api/v1/books
+2024-03-20T11:32:40.070+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book
+2024-03-20T11:32:40.145+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:40.146+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:40.190+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:40.193+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:40.193+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:40.195+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:40.198+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:40.198+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:40.199+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:40.201+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:40.202+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:40.203+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:40.205+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:44.757+0700	INFO	logger/logger.go:59	GET /api/v1/books?{isbn}
+2024-03-20T11:32:44.757+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-20T11:32:44.758+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:44.759+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:44.760+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:44.762+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:48.768+0700	INFO	logger/logger.go:59	GET /api/v1/books?{author}
+2024-03-20T11:32:48.769+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T11:32:48.772+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:48.777+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:48.778+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "id_author"=$1
+2024-03-20T11:32:48.779+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:52.318+0700	INFO	logger/logger.go:59	GET /api/v1/books/range
+2024-03-20T11:32:52.319+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-20T11:32:52.320+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:52.320+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:52.321+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:52.322+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:52.323+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:52.323+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:52.325+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:56.506+0700	INFO	logger/logger.go:59	POST /api/v1/books/update
+2024-03-20T11:32:56.506+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-20T11:32:56.507+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:56.507+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:56.508+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:56.509+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:56.511+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T11:32:56.513+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-20T11:32:56.514+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:56.514+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:32:56.514+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:32:56.515+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:32:56.517+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T11:33:02.633+0700	INFO	logger/logger.go:59	DELETE /api/v1/books/delete
+2024-03-20T11:33:02.633+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-20T11:33:02.634+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:33:02.634+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:33:02.635+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:33:02.637+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:33:02.638+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T11:33:02.638+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-20T11:33:02.639+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:33:02.639+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:33:02.640+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:33:02.642+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T11:33:02.643+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T11:33:07.074+0700	INFO	logger/logger.go:59	POST /api/v1/books/add
+2024-03-20T11:33:07.075+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-20T11:33:07.076+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:33:07.077+0700	ERROR	logger/logger.go:64	Error 	{"error": "no books found"}
+2024-03-20T11:33:07.078+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T11:33:07.078+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:33:07.079+0700	ERROR	logger/logger.go:64	Error 	{"error": "no author found"}
+2024-03-20T11:33:07.085+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "pq: invalid input syntax for type date: \"\""}
+2024-03-20T11:33:07.086+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "pq: invalid input syntax for type date: \"\""}
+2024-03-20T11:33:07.086+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T11:33:07.086+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:33:07.090+0700	ERROR	logger/logger.go:64	Error 	{"error": "no author found"}
+2024-03-20T11:33:07.195+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "pq: insert or update on table \"book\" violates foreign key constraint \"fk_author\""}
+2024-03-20T11:33:07.197+0700	ERROR	logger/logger.go:64	Error Insert: 	{"error": "pq: invalid input syntax for type date: \"\""}

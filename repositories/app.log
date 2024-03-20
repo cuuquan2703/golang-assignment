@@ -260,3 +260,38 @@
 2024-03-20T10:39:37.081+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
 2024-03-20T10:39:37.081+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-20T10:39:37.081+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T11:22:11.565+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T11:22:11.565+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.565+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where isbn=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "id_author"=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,id_author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T11:22:11.566+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.567+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:22:11.567+0700	INFO	logger/logger.go:59	Insert successfully books

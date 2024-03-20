@@ -9,6 +9,7 @@ import (
 	"net/url"
 	"server/logger"
 	repo "server/repositories"
+	"server/service"
 	"strconv"
 )
 
@@ -18,11 +19,14 @@ type Response struct {
 }
 
 var BookRepo, _ = repo.NewBookRepository()
+var BookService = service.BookService{
+	Repo: BookRepo,
+}
 var L = logger.CreateLog()
 
 func GetAllBooks(w http.ResponseWriter, r *http.Request) {
 	L.Info("GET /api/v1/books")
-	books, err := BookRepo.GetAllBooks()
+	books, err := BookService.GetAllBooks()
 	if err != nil {
 		L.Error("Error GetAllBooks: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
@@ -36,11 +40,11 @@ func GetAllBooks(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetByISBN(w http.ResponseWriter, r *http.Request) {
-	L.Info("GET /api/v1/books/i/")
+	L.Info("GET /api/v1/books?{isbn}")
 	// isbn := r.PathValue("isbn")
 	Url, _ := url.Parse(r.URL.String())
 	params, _ := url.ParseQuery(Url.RawQuery)
-	book, err := BookRepo.GetByISBN(params["isbn"][0])
+	book, err := BookService.GetByISBN(params["isbn"][0])
 	if err != nil {
 		L.Error("Error GetByISBN: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
@@ -54,11 +58,11 @@ func GetByISBN(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetByAuthor(w http.ResponseWriter, r *http.Request) {
-	L.Info("GET /api/v1/books/a/")
+	L.Info("GET /api/v1/books?{author}")
 	// author := r.PathValue("author")
 	Url, _ := url.Parse(r.URL.String())
 	params, _ := url.ParseQuery(Url.RawQuery)
-	books, err := BookRepo.GetByAuthor(params["author"][0])
+	books, err := BookService.GetByAuthor(params["author"][0])
 	if err != nil {
 		L.Error("Error GetByAuthor: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
@@ -93,7 +97,7 @@ func GetInRange(w http.ResponseWriter, r *http.Request) {
 	from, _ := strconv.Atoi(params["from"][0])
 	to, _ := strconv.Atoi(params["to"][0])
 
-	books, err := BookRepo.GetInRange(from, to)
+	books, err := BookService.GetInRange(from, to)
 	if err != nil {
 		L.Error("Error in range: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
@@ -116,7 +120,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		L.Error("json.Unmarshal", er)
 	}
 	for _, data := range bookData {
-		existingBook, err := BookRepo.GetByISBN(data.ISBN)
+		existingBook, err := BookService.GetByISBN(data.ISBN)
 		if err != nil {
 			L.Error("Error GetByISBN: ", err)
 
@@ -130,7 +134,7 @@ func Update(w http.ResponseWriter, r *http.Request) {
 		}
 
 		//
-		res, err2 := BookRepo.Update(data)
+		res, err2 := BookService.Update(data)
 		if err2 != nil {
 			L.Error("Error Update: ", err2)
 			response := &Response{Status: "fail", Message: err2.Error()}
@@ -152,7 +156,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	var bookData []repo.Book
 	_ = json.Unmarshal([]byte(string(body)), &bookData)
 	for _, data := range bookData {
-		_, err := BookRepo.GetByISBN(data.ISBN)
+		_, err := BookService.GetByISBN(data.ISBN)
 		if err != nil {
 			L.Error("Error GetByISBN: ", err)
 
@@ -161,7 +165,7 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 			json.NewEncoder(w).Encode(response)
 		}
 
-		res, err2 := BookRepo.Delete(data)
+		res, err2 := BookService.Delete(data)
 		if err2 != nil {
 			L.Error("Error Delete: ", err2)
 			http.Error(w, err2.Error(), http.StatusInternalServerError)
@@ -186,7 +190,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 	fmt.Println("Request Body:", bookData)
 	for _, data := range bookData {
 		fmt.Print(data)
-		_, err := BookRepo.GetByISBN(data.ISBN)
+		_, err := BookService.GetByISBN(data.ISBN)
 		if err == nil {
 			L.Error("Error GetByISBN: ", err)
 
@@ -195,7 +199,7 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 			json.NewEncoder(w).Encode(response)
 		}
 
-		res, err2 := BookRepo.Insert(data)
+		res, err2 := BookService.Insert(data)
 		if err2 != nil {
 			L.Error("Error Insert: ", err2)
 			response := &Response{Status: "fail", Message: err2.Error()}
