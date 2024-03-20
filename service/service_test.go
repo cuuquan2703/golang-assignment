@@ -128,16 +128,22 @@ func TestGetInRange(t *testing.T) {
 
 func TestUpdate(t *testing.T) {
 
-	isbn := "19123450"
-	newName := "Updated"
-	newAuthor := "Updated Author"
-	newPublishYear := 2019
+	var bookData = []repositories.Book{
+		{ISBN: "19123450", Name: "Update 1", Author: "Author 1", PublishYear: 2022},
+		{ISBN: "19126450", Name: "Update 2", Author: "Author 2", PublishYear: 2021},
+	}
 
-	mock.ExpectExec(regexp.QuoteMeta("UPDATE Book SET name = $1, publish_year = $2, author = $3 WHERE isbn = $4")).
-		WithArgs(newName, newPublishYear, newAuthor, isbn).
-		WillReturnResult(sqlmock.NewResult(0, 1))
+	for _, data := range bookData {
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,author,publish_year from Book where "isbn"=$1`)).
+			WithArgs(data.ISBN).
+			WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
+				AddRow(data.ISBN, "Atomic", "Grahahm", 2022))
+		mock.ExpectExec(regexp.QuoteMeta("UPDATE Book SET name = $1, publish_year = $2, author = $3 WHERE isbn = $4")).
+			WithArgs(data.Name, data.PublishYear, data.Author, data.ISBN).
+			WillReturnResult(sqlmock.NewResult(0, 1))
+	}
 
-	_, err := bookService.Update(isbn, newName, newAuthor, newPublishYear)
+	err := bookService.Update(bookData)
 	if err != nil {
 		t.Errorf("Error when updating db")
 	}
@@ -149,13 +155,22 @@ func TestUpdate(t *testing.T) {
 
 func TestDelete(t *testing.T) {
 
-	isbn := "19123450"
+	var bookData = []repositories.Book{
+		{ISBN: "19123450", Name: "Name 1", Author: "Author 1", PublishYear: 2022},
+		{ISBN: "19126450", Name: "Name 1", Author: "Author 1", PublishYear: 2022},
+	}
 
-	mock.ExpectExec(regexp.QuoteMeta("DELETE FROM Book WHERE isbn = $1")).
-		WithArgs(isbn).
-		WillReturnResult(sqlmock.NewResult(0, 1))
+	for _, data := range bookData {
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,author,publish_year from Book where "isbn"=$1`)).
+			WithArgs(data.ISBN).
+			WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
+				AddRow(data.ISBN, "Name 1", "Author 1", 2022))
+		mock.ExpectExec(regexp.QuoteMeta("DELETE FROM Book WHERE isbn = $1")).
+			WithArgs(data.ISBN).
+			WillReturnResult(sqlmock.NewResult(0, 1))
+	}
 
-	_, err := bookService.Delete(isbn)
+	err := bookService.Delete(bookData)
 	if err != nil {
 		t.Errorf("Error when delete db")
 	}
@@ -167,16 +182,22 @@ func TestDelete(t *testing.T) {
 
 func TestInsert(t *testing.T) {
 
-	isbn := "19123450"
-	newName := "Updated"
-	newAuthor := "Updated Author"
-	newPublishYear := 2019
+	var bookData = []repositories.Book{
+		{ISBN: "19123450", Name: "Name 1", Author: "Author 1", PublishYear: 2022},
+		{ISBN: "19126450", Name: "Name 2", Author: "Author 2", PublishYear: 2024},
+	}
 
-	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, author) VALUES ($1, $2, $3, $4)")).
-		WithArgs(isbn, newName, newPublishYear, newAuthor).
-		WillReturnResult(sqlmock.NewResult(0, 1))
+	for _, data := range bookData {
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,author,publish_year from Book where "isbn"=$1`)).
+			WithArgs(data.ISBN).
+			WillReturnRows(sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
+				AddRow(nil, nil, nil, nil))
+		mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, author) VALUES ($1, $2, $3, $4)")).
+			WithArgs(data.ISBN, data.Name, data.PublishYear, data.Author).
+			WillReturnResult(sqlmock.NewResult(0, 1))
+	}
 
-	_, err := bookService.Insert(isbn, newName, newAuthor, newPublishYear)
+	err := bookService.Insert(bookData)
 	if err != nil {
 		t.Errorf("Error when inserting db")
 	}

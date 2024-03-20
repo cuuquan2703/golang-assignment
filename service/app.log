@@ -37,3 +37,47 @@
 2024-03-20T12:12:44.780+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-20T12:12:44.780+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
 2024-03-20T12:12:44.780+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:09:05.288+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:09:05.290+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:09:05.290+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT isbn,name,author,publish_year from Book where \"isbn\"=$1' with args [{Name: Ordinal:1 Value:19123450}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'UPDATE Book SET name = \\$1, publish_year = \\$2, author = \\$3 WHERE isbn = \\$4'\n  - is with arguments:\n    0 - Update 1\n    1 - 2022\n    2 - Author 1\n    3 - 19123450\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T13:09:05.290+0700	ERROR	logger/logger.go:64	Error: 	{"error": "Something went wrong"}
+2024-03-20T13:14:17.920+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:14:17.920+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:14:17.920+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:14:17.920+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:16:26.200+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:16:26.200+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:16:26.200+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:16:26.200+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:18:58.474+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:18:58.475+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:18:58.475+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"isbn\": converting NULL to string is unsupported"}
+2024-03-20T13:18:58.475+0700	ERROR	logger/logger.go:64	Error: 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book (isbn, name, publish_year, author) VALUES ($1, $2, $3, $4)\" with expected regexp \"DELETE FROM Book WHERE isbn = \\$1\""}
+2024-03-20T13:19:39.963+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:19:39.963+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:19:39.963+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"isbn\": converting NULL to string is unsupported"}
+2024-03-20T13:19:39.963+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:19:39.963+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:19:39.963+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"isbn\": converting NULL to string is unsupported"}
+2024-03-20T13:20:02.243+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T13:20:02.243+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.243+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "author"=$1
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.244+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:20:02.245+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.245+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:20:02.245+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.245+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:20:02.245+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.245+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"isbn\": converting NULL to string is unsupported"}
+2024-03-20T13:20:02.245+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:20:02.245+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:20:02.245+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"isbn\": converting NULL to string is unsupported"}
