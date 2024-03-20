@@ -142,3 +142,67 @@
 2024-03-20T12:09:11.665+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
 2024-03-20T12:09:11.666+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-20T12:09:11.667+0700	ERROR	logger/logger.go:64	Error 	{"error": "no books found"}
+2024-03-20T13:20:48.462+0700	INFO	logger/logger.go:59	Insert mock data
+2024-03-20T13:20:48.531+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:20:48.532+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:20:48.534+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:20:48.535+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:22:13.489+0700	INFO	logger/logger.go:59	Insert mock data
+2024-03-20T13:22:13.532+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:22:13.534+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:22:13.534+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:22:13.535+0700	ERROR	logger/logger.go:64	Error while inserting mock data	{"error": "pq: duplicate key value violates unique constraint \"book_pkey\""}
+2024-03-20T13:22:49.518+0700	INFO	logger/logger.go:59	Insert mock data
+2024-03-20T13:23:01.674+0700	INFO	logger/logger.go:59	GET /api/v1/books
+2024-03-20T13:23:01.675+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T13:23:01.763+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:23:04.416+0700	INFO	logger/logger.go:59	GET /api/v1/books?{isbn}
+2024-03-20T13:23:04.417+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:23:04.418+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:23:06.902+0700	INFO	logger/logger.go:59	GET /api/v1/books?{author}
+2024-03-20T13:23:06.903+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "author"=$1
+2024-03-20T13:23:06.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:23:09.327+0700	INFO	logger/logger.go:59	GET /api/v1/books/range
+2024-03-20T13:23:09.328+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-20T13:23:09.328+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:23:12.682+0700	INFO	logger/logger.go:59	POST /api/v1/books/update
+2024-03-20T13:23:12.682+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:23:12.682+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:23:12.686+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:23:12.686+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:27:27.402+0700	INFO	logger/logger.go:59	Insert mock data
+2024-03-20T13:27:40.515+0700	INFO	logger/logger.go:59	POST /api/v1/books/update
+2024-03-20T13:27:40.515+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:27:40.606+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:27:40.609+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:27:40.611+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:29:46.684+0700	INFO	logger/logger.go:59	Insert mock data
+2024-03-20T13:29:55.781+0700	INFO	logger/logger.go:59	GET /api/v1/books
+2024-03-20T13:29:55.781+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T13:29:55.832+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:29:58.029+0700	INFO	logger/logger.go:59	GET /api/v1/books?{isbn}
+2024-03-20T13:29:58.030+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:29:58.032+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:00.389+0700	INFO	logger/logger.go:59	GET /api/v1/books?{author}
+2024-03-20T13:30:00.389+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "author"=$1
+2024-03-20T13:30:00.391+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:02.545+0700	INFO	logger/logger.go:59	GET /api/v1/books/range
+2024-03-20T13:30:02.545+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-20T13:30:02.546+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:04.939+0700	INFO	logger/logger.go:59	POST /api/v1/books/update
+2024-03-20T13:30:04.940+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:30:04.940+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:04.942+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:30:04.943+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:07.146+0700	INFO	logger/logger.go:59	DELETE /api/v1/books/delete
+2024-03-20T13:30:07.147+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:30:07.147+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:07.149+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:30:07.149+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:09.495+0700	INFO	logger/logger.go:59	POST /api/v1/books/add
+2024-03-20T13:30:09.496+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:30:09.497+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:09.498+0700	ERROR	logger/logger.go:64	Error 	{"error": "no books found"}
+2024-03-20T13:30:09.517+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T13:30:09.519+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T13:30:09.520+0700	ERROR	logger/logger.go:64	Error 	{"error": "no books found"}

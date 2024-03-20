@@ -113,10 +113,16 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	var bookData []repo.Book
 	_ = json.Unmarshal([]byte(string(body)), &bookData)
 	err := BookService.Update(bookData)
-	http.Error(w, err.Error(), http.StatusInternalServerError)
-	response := &Response{Status: "fail", Message: err.Error()}
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(response)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		response := &Response{Status: "fail", Message: err.Error()}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+	} else {
+		response := &Response{Status: "success", Message: ""}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+	}
 }
 
 func Delete(w http.ResponseWriter, r *http.Request) {
@@ -126,9 +132,17 @@ func Delete(w http.ResponseWriter, r *http.Request) {
 	var bookData []repo.Book
 	_ = json.Unmarshal([]byte(string(body)), &bookData)
 	err := BookService.Delete(bookData)
-	response := &Response{Status: "fail", Message: err.Error()}
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(response)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		response := &Response{Status: "fail", Message: err.Error()}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+	} else {
+		response := &Response{Status: "success", Message: ""}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+	}
+
 }
 
 func Insert(w http.ResponseWriter, r *http.Request) {
@@ -138,8 +152,14 @@ func Insert(w http.ResponseWriter, r *http.Request) {
 	var bookData []repo.Book
 	_ = json.Unmarshal([]byte(string(body)), &bookData)
 	err := BookService.Insert(bookData)
-	http.Error(w, err.Error(), http.StatusInternalServerError)
-	response := &Response{Status: "fail", Message: err.Error()}
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(response)
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		response := &Response{Status: "fail", Message: err.Error()}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+	} else {
+		response := &Response{Status: "success", Message: ""}
+		w.Header().Set("Content-Type", "application/json")
+		json.NewEncoder(w).Encode(response)
+	}
 }

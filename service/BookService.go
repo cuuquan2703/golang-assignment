@@ -29,57 +29,60 @@ func (service BookService) GetInRange(year1, year2 int) ([]repositories.Book, er
 }
 
 func (service BookService) Update(bookData []repositories.Book) error {
+	var err error
 	for _, data := range bookData {
-		existingBook, err := service.Repo.GetByISBN(data.ISBN)
-		if err != nil {
-			L.Error("Error: ", err)
-			return err
+		existingBook, errGet := service.Repo.GetByISBN(data.ISBN)
+		if errGet != nil {
+			L.Error("Error: ", errGet)
+			err = errGet
 		}
 		if existingBook == (repositories.Book{}) {
-			return errors.New("Book not found")
+			err = errors.New("Book not found")
 		}
 
-		_, err2 := service.Repo.Update(data.ISBN, data.Name, data.Author, data.PublishYear)
-		if err2 != nil {
-			L.Error("Error: ", err2)
-			return err2
+		_, errUpdate := service.Repo.Update(data.ISBN, data.Name, data.Author, data.PublishYear)
+		if errUpdate != nil {
+			L.Error("Error: ", errUpdate)
+			err = errUpdate
 		}
 	}
-	return nil
+	return err
 }
 
 func (service BookService) Delete(bookData []repositories.Book) error {
+	var err error
 	for _, data := range bookData {
-		existingBook, err := service.Repo.GetByISBN(data.ISBN)
-		if err != nil {
-			L.Error("Error: ", err)
-			return err
+		existingBook, errGet := service.Repo.GetByISBN(data.ISBN)
+		if errGet != nil {
+			L.Error("Error: ", errGet)
+			err = errGet
 		}
 		if existingBook == (repositories.Book{}) {
-			return errors.New("Book not found")
+			err = errors.New("Book not found")
 		}
 
 		_, err2 := service.Repo.Delete(data.ISBN)
 		if err2 != nil {
-			return err2
+			err = err2
 		}
 	}
-	return nil
+	return err
 }
 
 func (service BookService) Insert(bookData []repositories.Book) error {
+	var err error
 	for _, data := range bookData {
-		_, err := service.Repo.GetByISBN(data.ISBN)
-		if err == nil {
-			L.Error("Error: ", err)
-			return err
+		_, errGet := service.Repo.GetByISBN(data.ISBN)
+		if errGet == nil {
+			L.Error("Error: ", errGet)
+			err = errGet
 		}
 
 		_, err2 := service.Repo.Insert(data.ISBN, data.Name, data.Author, data.PublishYear)
 		if err2 != nil {
 			L.Error("Error: ", err2)
-			return err2
+			err = err2
 		}
 	}
-	return nil
+	return err
 }
