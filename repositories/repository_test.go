@@ -20,17 +20,18 @@ func NewMock() (*sql.DB, sqlmock.Sqlmock) {
 	return db, mock
 }
 
-func TestGetAllBooks(t *testing.T) {
-	db, mock := NewMock()
+var db, mock = NewMock()
 
-	repo := repositories.BookRepository{
+var repo = repositories.BookRepository{
+	DB:    db,
+	Table: "Book",
+	AuthorRepo: repositories.AuthorRepository{
 		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
+		Table: "author",
+	},
+}
+
+func TestGetAllBooks(t *testing.T) {
 	expected := []repositories.Book{
 		{ISBN: "19123450", Name: "Atomic", Author: repositories.Author{Id: 1, Name: "Thmoas", BirthDate: "17-04-2002"}, PublishYear: 2022},
 		{ISBN: "12235670", Name: "Skinner", Author: repositories.Author{Id: 2, Name: "Albert", BirthDate: "17-04-2002"}, PublishYear: 2001},
@@ -63,16 +64,6 @@ func TestGetAllBooks(t *testing.T) {
 }
 
 func TestGetByISBN(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
 	expected := []repositories.Book{
 		{ISBN: "12223900", Name: "Short", Author: repositories.Author{Id: 3, Name: "Vicotr", BirthDate: "17-04-2002"}, PublishYear: 1998},
 	}
@@ -95,16 +86,6 @@ func TestGetByISBN(t *testing.T) {
 }
 
 func TestGetByAuthor(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
 	expected := []repositories.Book{
 		{ISBN: "12235670", Name: "Skinner", Author: repositories.Author{Id: 2, Name: "Albert", BirthDate: "17-04-2002"}, PublishYear: 2001},
 	}
@@ -127,16 +108,6 @@ func TestGetByAuthor(t *testing.T) {
 }
 
 func TestGetInRange(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
 	expected := []repositories.Book{
 		{ISBN: "19123450", Name: "Atomic", Author: repositories.Author{Id: 1, Name: "Thmoas", BirthDate: "17-04-2002"}, PublishYear: 2022},
 		{ISBN: "12235670", Name: "Skinner", Author: repositories.Author{Id: 2, Name: "Albert", BirthDate: "17-04-2002"}, PublishYear: 2001},
@@ -164,16 +135,6 @@ func TestGetInRange(t *testing.T) {
 }
 
 func TestUpdate(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
 
 	newBook := repositories.Book{
 		ISBN:        "123456789",
@@ -198,16 +159,6 @@ func TestUpdate(t *testing.T) {
 }
 
 func TestDelete(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
 
 	newBook := repositories.Book{
 		ISBN:        "123456789",
@@ -232,16 +183,6 @@ func TestDelete(t *testing.T) {
 }
 
 func TestInsertCaseExistAuthor(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
 
 	existAuthor := repositories.Author{
 		Id:        1,
@@ -275,16 +216,6 @@ func TestInsertCaseExistAuthor(t *testing.T) {
 }
 
 func TestInsertCaseNotExistAuthor(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-		AuthorRepo: repositories.AuthorRepository{
-			DB:    db,
-			Table: "author",
-		},
-	}
 
 	notExistAuthor := repositories.Author{
 		Id:        1,
