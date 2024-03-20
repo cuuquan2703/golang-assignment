@@ -1,0 +1,6 @@
+2024-03-20T11:05:53.667+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T11:05:53.668+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:06:09.069+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T11:06:09.069+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T11:06:32.967+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T11:06:32.967+0700	INFO	logger/logger.go:59	Query successfully
