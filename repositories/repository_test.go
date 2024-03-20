@@ -41,14 +41,18 @@ func TestGetAllBooks(t *testing.T) {
 		AddRow("19123450", "Atomic", 1, 2022).
 		AddRow("12235670", "Skinner", 2, 2001).
 		AddRow("12223900", "Short", 3, 1998)
-	Authorrows := sqlmock.NewRows([]string{"id", "name", "birth_date"}).
-		AddRow(1, "Thmoas", "17-04-2002").
-		AddRow(2, "Albert", "17-04-2002").
-		AddRow(3, "Vicotr", "17-04-2002")
-	mock.ExpectQuery("SELECT isbn,name,author,publish_year from Book").WillReturnRows(Bookrows)
-	mock.ExpectQuery("SELECT id,name,birth_date from Author").WillReturnRows(Authorrows)
-	mock.ExpectQuery("SELECT (.*)").WillReturnRows(Authorrows)
-	mock.ExpectQuery("SELECT (.*)").WillReturnRows(Authorrows)
+	Authorrows := []repositories.Author{
+		{Id: 1, Name: "Thmoas", BirthDate: "17-04-2002"},
+		{Id: 2, Name: "Albert", BirthDate: "17-04-2002"},
+		{Id: 3, Name: "Vicotr", BirthDate: "17-04-2002"},
+	}
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,id_author,publish_year from Book`)).WillReturnRows(Bookrows)
+
+	for index, _ := range expected {
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).
+			WithArgs(expected[index].Author.Id).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).AddRow(Authorrows[index].Id, Authorrows[index].Name, Authorrows[index].BirthDate))
+	}
 
 	book, err := repo.GetAllBooks()
 	if err != nil {

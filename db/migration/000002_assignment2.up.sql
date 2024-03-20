@@ -4,7 +4,7 @@ ADD COLUMN id_author SERIAL;
 CREATE TABLE Author (
     id SERIAL PRIMARY KEY,
     name VARCHAR(100),
-    birth_date DATE
+    birth_date VARCHAR(100)
 );
 
 INSERT INTO Author (name)

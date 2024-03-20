@@ -46,14 +46,18 @@ func TestGetAllBooks(t *testing.T) {
 		AddRow("19123450", "Atomic", 1, 2022).
 		AddRow("12235670", "Skinner", 2, 2001).
 		AddRow("12223900", "Short", 3, 1998)
-	Authorrows := sqlmock.NewRows([]string{"id", "name", "birth_date"}).
-		AddRow(1, "Thmoas", "17-04-2002").
-		AddRow(2, "Albert", "17-04-2002").
-		AddRow(3, "Vicotr", "17-04-2002")
-	mock.ExpectQuery("SELECT isbn,name,author,publish_year from Book").WillReturnRows(Bookrows)
-	mock.ExpectQuery("SELECT id,name,birth_date from Author").WillReturnRows(Authorrows)
-	mock.ExpectQuery("SELECT (.*)").WillReturnRows(Authorrows)
-	mock.ExpectQuery("SELECT (.*)").WillReturnRows(Authorrows)
+	Authorrows := []repositories.Author{
+		{Id: 1, Name: "Thmoas", BirthDate: "17-04-2002"},
+		{Id: 2, Name: "Albert", BirthDate: "17-04-2002"},
+		{Id: 3, Name: "Vicotr", BirthDate: "17-04-2002"},
+	}
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,id_author,publish_year from Book`)).WillReturnRows(Bookrows)
+
+	for index, _ := range expected {
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).
+			WithArgs(expected[index].Author.Id).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).AddRow(Authorrows[index].Id, Authorrows[index].Name, Authorrows[index].BirthDate))
+	}
 
 	book, err := bookService.GetAllBooks()
 	if err != nil {
@@ -141,18 +145,49 @@ func TestGetInRange(t *testing.T) {
 
 func TestUpdate(t *testing.T) {
 
-	newBook := repositories.Book{
-		ISBN:        "123456789",
-		Name:        "Updated Book Name",
-		PublishYear: 2024,
-		Author:      repositories.Author{},
+	oldData := []repositories.Book{
+		{ISBN: "123456789", Name: "Old Book Name", PublishYear: 2022, Author: repositories.Author{
+			Id:        1,
+			Name:      "Albert",
+			BirthDate: "12-02-1998",
+		}},
+		{ISBN: "113456789", Name: "Old Book Name", PublishYear: 2024, Author: repositories.Author{
+			Id:        2,
+			Name:      "Kale",
+			BirthDate: "12-02-1988",
+		}},
 	}
 
-	mock.ExpectExec(regexp.QuoteMeta("UPDATE Book SET name = $1, publish_year = $2 WHERE isbn = $3")).
-		WithArgs(newBook.Name, newBook.PublishYear, newBook.ISBN).
-		WillReturnResult((sqlmock.NewResult(0, 1)))
+	newData := []repositories.Book{
+		{ISBN: "123456789", Name: "Updated Book Name", Author: repositories.Author{
+			Id:        1,
+			Name:      "Albert",
+			BirthDate: "12-02-1998"}, PublishYear: 2024},
+		{ISBN: "113456789", Name: "Updated Book Name", Author: repositories.Author{
+			Id:        2,
+			Name:      "Kale",
+			BirthDate: "12-02-1988",
+		}, PublishYear: 2024},
+	}
 
-	_, err := bookService.Update(newBook)
+	for index, _ := range oldData {
+
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,id_author,publish_year from Book where isbn=$1`)).
+			WithArgs(oldData[index].ISBN).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "publish_year", "author"}).
+				AddRow(oldData[index].ISBN, oldData[index].Name, oldData[index].Author.Id, oldData[index].PublishYear))
+
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).
+			WithArgs(oldData[index].Author.Id).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+				AddRow(oldData[index].Author.Id, oldData[index].Author.Name, oldData[index].Author.BirthDate))
+
+		mock.ExpectExec(regexp.QuoteMeta("UPDATE Book SET name = $1, publish_year = $2 WHERE isbn = $3")).
+			WithArgs(newData[index].Name, newData[index].PublishYear, newData[index].ISBN).
+			WillReturnResult((sqlmock.NewResult(0, 1)))
+	}
+
+	_, err := bookService.Update(newData)
 
 	if err != nil {
 		t.Errorf("Error when updating data")
@@ -165,18 +200,36 @@ func TestUpdate(t *testing.T) {
 
 func TestDelete(t *testing.T) {
 
-	newBook := repositories.Book{
-		ISBN:        "123456789",
-		Name:        "Name",
-		PublishYear: 2024,
-		Author:      repositories.Author{},
+	data := []repositories.Book{
+		{ISBN: "123456789", Name: "Old Book Name", Author: repositories.Author{
+			Id:        1,
+			Name:      "Albert",
+			BirthDate: "12-02-1998",
+		}, PublishYear: 2022},
+		{ISBN: "113456789", Name: "Old Book Name", Author: repositories.Author{
+			Id:        2,
+			Name:      "Kale",
+			BirthDate: "12-02-1988",
+		}, PublishYear: 2024},
+	}
+	for index, _ := range data {
+
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT isbn,name,id_author,publish_year from Book where isbn=$1`)).
+			WithArgs(data[index].ISBN).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "publish_year", "author"}).
+				AddRow(data[index].ISBN, data[index].Name, data[index].Author.Id, data[index].PublishYear))
+
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE id=$1`)).
+			WithArgs(data[index].Author.Id).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+				AddRow(data[index].Author.Id, data[index].Author.Name, data[index].Author.BirthDate))
+
+		mock.ExpectExec(regexp.QuoteMeta("DELETE FROM Book WHERE isbn = $1")).
+			WithArgs(data[index].ISBN).
+			WillReturnResult((sqlmock.NewResult(0, 1)))
 	}
 
-	mock.ExpectExec(regexp.QuoteMeta("DELETE FROM Book WHERE isbn = $1")).
-		WithArgs(newBook.ISBN).
-		WillReturnResult((sqlmock.NewResult(0, 1)))
-
-	_, err := bookService.Delete(newBook)
+	_, err := bookService.Delete(data)
 
 	if err != nil {
 		t.Errorf("Error when deleting data")
@@ -189,27 +242,33 @@ func TestDelete(t *testing.T) {
 
 func TestInsertCaseExistAuthor(t *testing.T) {
 
-	existAuthor := repositories.Author{
-		Id:        1,
-		Name:      "Author",
-		BirthDate: "17-04-2002",
+	existAuthor := []repositories.Author{
+		{Id: 1, Name: "Albert", BirthDate: "12-02-1998"},
+		{Id: 2, Name: "Kale", BirthDate: "12-02-1988"},
 	}
 
-	newBook := repositories.Book{
-		ISBN:        "123456789",
-		Name:        "Name",
-		PublishYear: 2024,
-		Author:      existAuthor,
+	data := []repositories.Book{
+		{ISBN: "123456789", Name: "New Book Name", PublishYear: 2022, Author: repositories.Author{
+			Name:      "Albert",
+			BirthDate: "12-02-1998",
+		}},
+		{ISBN: "113456789", Name: "New Book Name", PublishYear: 2024, Author: repositories.Author{
+			Name:      "Kale",
+			BirthDate: "12-02-1988",
+		}},
 	}
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
-		WithArgs(existAuthor.Name).
-		WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
-			AddRow(1, "Author", "17-04-2002"))
 
-	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);")).
-		WithArgs(newBook.ISBN, newBook.Name, newBook.PublishYear, existAuthor.Id).
-		WillReturnResult((sqlmock.NewResult(0, 1)))
-	_, err := bookService.Insert(newBook)
+	for index, _ := range data {
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
+			WithArgs(data[index].Author.Name).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+				AddRow(existAuthor[index].Id, existAuthor[index].Name, existAuthor[index].BirthDate))
+
+		mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);")).
+			WithArgs(data[index].ISBN, data[index].Name, data[index].PublishYear, existAuthor[index].Id).
+			WillReturnResult((sqlmock.NewResult(0, 1)))
+	}
+	_, err := bookService.Insert(data)
 
 	if err != nil {
 		t.Errorf("Error when Insert data")
@@ -222,36 +281,42 @@ func TestInsertCaseExistAuthor(t *testing.T) {
 
 func TestInsertCaseNotExistAuthor(t *testing.T) {
 
-	notExistAuthor := repositories.Author{
-		Id:        1,
-		Name:      "Author",
-		BirthDate: "17-04-2002",
+	genAuthor := []repositories.Author{
+		{Id: 1, Name: "Albert", BirthDate: "12-02-1998"},
+		{Id: 2, Name: "Kale", BirthDate: "12-02-1988"},
 	}
 
-	newBook := repositories.Book{
-		ISBN:        "123456789",
-		Name:        "Name",
-		PublishYear: 2024,
-		Author:      notExistAuthor,
+	data := []repositories.Book{
+		{ISBN: "123456789", Name: "New Book Name", PublishYear: 2022, Author: repositories.Author{
+			Name:      "Albert",
+			BirthDate: "12-02-1998",
+		}},
+		{ISBN: "113456789", Name: "New Book Name", PublishYear: 2024, Author: repositories.Author{
+			Name:      "Kale",
+			BirthDate: "12-02-1988",
+		}},
 	}
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
-		WithArgs(notExistAuthor.Name).
-		WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
-			AddRow(nil, nil, nil))
 
-	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Author (name,birth_date) VALUES ($1,$2)")).
-		WithArgs(notExistAuthor.Name, notExistAuthor.BirthDate).
-		WillReturnResult(sqlmock.NewResult(0, 1))
+	for index, _ := range data {
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
+			WithArgs(data[index].Author.Name).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+				AddRow(nil, nil, nil))
 
-	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
-		WithArgs(notExistAuthor.Name).
-		WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
-			AddRow(1, "Author", "17-04-2002"))
+		mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Author (name,birth_date) VALUES ($1,$2)")).
+			WithArgs(data[index].Author.Name, data[index].Author.BirthDate).
+			WillReturnResult((sqlmock.NewResult(0, 1)))
 
-	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);")).
-		WithArgs(newBook.ISBN, newBook.Name, newBook.PublishYear, notExistAuthor.Id).
-		WillReturnResult((sqlmock.NewResult(0, 1)))
-	_, err := bookService.Insert(newBook)
+		mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
+			WithArgs(data[index].Author.Name).
+			WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+				AddRow(genAuthor[index].Id, genAuthor[index].Name, genAuthor[index].BirthDate))
+
+		mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);")).
+			WithArgs(data[index].ISBN, data[index].Name, data[index].PublishYear, genAuthor[index].Id).
+			WillReturnResult((sqlmock.NewResult(0, 1)))
+	}
+	_, err := bookService.Insert(data)
 
 	if err != nil {
 		t.Errorf("Error when Insert data")

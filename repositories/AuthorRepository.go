@@ -3,6 +3,7 @@ package repositories
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	_ "os"
 	_ "server/logger"
 	_ "strconv"
@@ -87,6 +88,7 @@ func (repo AuthorRepository) GetByName(name string) (Author, error) {
 	row := repo.DB.QueryRow(cmd, name)
 	L.Info("Query successfully")
 	err := row.Scan(&author.Id, &author.Name, &author.BirthDate)
+	fmt.Println(author)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			L.Error("Error ", errors.New("no author found"))

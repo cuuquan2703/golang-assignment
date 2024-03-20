@@ -105,7 +105,7 @@ func (repo BookRepository) GetByISBN(isbn string) (Book, error) {
 	row := repo.DB.QueryRow(cmd, isbn)
 	L.Info("Query successfully")
 	err := row.Scan(&book.ISBN, &book.Name, &book.Author.Id, &book.PublishYear)
-
+	fmt.Print(book)
 	if err != nil {
 		if err == sql.ErrNoRows {
 			L.Error("Error ", errors.New("no books found"))
@@ -203,7 +203,10 @@ func (repo BookRepository) Insert(data Book) (sql.Result, error) {
 		}
 
 		data.Author, _ = repo.AuthorRepo.GetByName(data.Author.Name)
+	} else {
+		data.Author = author
 	}
+
 	res, err2 := repo.DB.Exec("INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);", data.ISBN, data.Name, data.PublishYear, data.Author.Id)
 	if err2 != nil {
 		L.Error("Error insert books ", err2)
