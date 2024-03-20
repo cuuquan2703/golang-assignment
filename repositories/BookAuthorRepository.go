@@ -3,6 +3,7 @@ package repositories
 import (
 	"database/sql"
 	"errors"
+	"fmt"
 	_ "os"
 	_ "server/logger"
 	_ "strconv"
@@ -74,7 +75,9 @@ func (repo BookAuthorRepository) Insert(IdBook string, IdAuthor int) (sql.Result
 }
 
 func (repo BookAuthorRepository) Delete(IdBook string) (sql.Result, error) {
+	fmt.Println(IdBook)
 	L.Info("Delete from book_author table")
+
 	res, err := repo.DB.Exec(" DELETE FROM Book_Author WHERE id_book = $1;", IdBook)
 	if err != nil {
 		L.Error("Error ", err)

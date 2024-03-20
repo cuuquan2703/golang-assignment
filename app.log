@@ -168,3 +168,102 @@
 2024-03-18T16:10:06.093+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-18T16:10:06.094+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
 2024-03-18T16:10:06.094+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:34.905+0700	INFO	logger/logger.go:59	GET /api/v1/books
+2024-03-20T15:27:34.905+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book
+2024-03-20T15:27:34.988+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:34.988+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:27:35.123+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:35.127+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T15:27:35.128+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:27:35.128+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:35.130+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T15:27:35.130+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:27:35.131+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:35.131+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:27:35.132+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:45.540+0700	INFO	logger/logger.go:59	GET /api/v1/books/i/
+2024-03-20T15:27:45.541+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1
+2024-03-20T15:27:45.541+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:45.542+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:27:45.544+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:48.106+0700	INFO	logger/logger.go:59	GET /api/v1/books/a/
+2024-03-20T15:27:48.107+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn= ba.id_book 
+			JOIN author a ON ba.id_author = a.id 
+			WHERE a.name = $1
+2024-03-20T15:27:48.108+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:48.109+0700	ERROR	logger/logger.go:64	Error 	{"error": "no books found"}
+2024-03-20T15:27:48.111+0700	ERROR	logger/logger.go:64	Error GetByAuthor: 	{"error": "No books found"}
+2024-03-20T15:27:56.547+0700	INFO	logger/logger.go:59	GET /api/v1/books/a/
+2024-03-20T15:27:56.548+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn= ba.id_book 
+			JOIN author a ON ba.id_author = a.id 
+			WHERE a.name = $1
+2024-03-20T15:27:56.549+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:56.549+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:27:56.549+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:27:56.551+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T15:28:00.114+0700	INFO	logger/logger.go:59	GET /api/v1/books/range
+2024-03-20T15:28:00.114+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book  
+			WHERE b.publish_year<=$2 and b.publish_year>=$1
+2024-03-20T15:28:00.115+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:00.117+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:28:00.117+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:00.119+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T15:28:00.120+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:28:00.121+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:00.122+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 2, name \"birth_date\": converting NULL to string is unsupported"}
+2024-03-20T15:28:00.122+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:28:00.125+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:03.904+0700	INFO	logger/logger.go:59	POST /api/v1/books/update
+2024-03-20T15:28:03.904+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1
+2024-03-20T15:28:03.905+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:03.905+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:28:03.906+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:03.908+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T15:28:03.908+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1
+2024-03-20T15:28:03.909+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:03.909+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:28:03.910+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:03.911+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T15:28:06.321+0700	INFO	logger/logger.go:59	DELETE /api/v1/books/delete
+2024-03-20T15:28:06.321+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1
+2024-03-20T15:28:06.322+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:06.322+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:28:06.323+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:06.323+0700	INFO	logger/logger.go:59	Delete from book_author table
+2024-03-20T15:28:06.410+0700	INFO	logger/logger.go:59	Delete successfully
+2024-03-20T15:28:06.410+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T15:28:06.411+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T15:28:06.412+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1
+2024-03-20T15:28:06.412+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:06.413+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T15:28:06.414+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:06.414+0700	INFO	logger/logger.go:59	Delete from book_author table
+2024-03-20T15:28:06.415+0700	INFO	logger/logger.go:59	Delete successfully
+2024-03-20T15:28:06.415+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T15:28:06.416+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T15:28:10.471+0700	INFO	logger/logger.go:59	POST /api/v1/books/add
+2024-03-20T15:28:10.471+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T15:28:10.473+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:10.474+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T15:28:10.475+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T15:28:10.478+0700	ERROR	logger/logger.go:64	Error 	{"error": "pq: insert or update on table \"book_author\" violates foreign key constraint \"book_author_id_author_fkey\""}
+2024-03-20T15:28:10.480+0700	ERROR	logger/logger.go:64	Error insert book_author 	{"error": "pq: insert or update on table \"book_author\" violates foreign key constraint \"book_author_id_author_fkey\""}
+2024-03-20T15:28:10.480+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T15:28:10.481+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T15:28:10.482+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T15:28:10.482+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T15:28:10.485+0700	ERROR	logger/logger.go:64	Error 	{"error": "pq: insert or update on table \"book_author\" violates foreign key constraint \"book_author_id_author_fkey\""}
+2024-03-20T15:28:10.486+0700	ERROR	logger/logger.go:64	Error insert book_author 	{"error": "pq: insert or update on table \"book_author\" violates foreign key constraint \"book_author_id_author_fkey\""}

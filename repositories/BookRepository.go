@@ -214,6 +214,8 @@ func (repo BookRepository) Insert(data Book) (sql.Result, error) {
 			L.Info("Insert successfully author")
 		}
 		data.Author, _ = repo.AuthorRepo.GetByName(data.Author.Name)
+	} else {
+		data.Author = author
 	}
 
 	res, err2 := repo.DB.Exec(" INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);", data.ISBN, data.Name, data.PublishYear)
