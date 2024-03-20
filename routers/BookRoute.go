@@ -87,6 +87,20 @@ func GetInRange(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(response)
 }
 
+func Get(w http.ResponseWriter, r *http.Request) {
+	Url, _ := url.Parse(r.URL.String())
+	params, _ := url.ParseQuery(Url.RawQuery)
+	if len(params) == 0 {
+		GetAllBooks(w, r)
+	}
+	if _, ok := params["isbn"]; ok {
+		GetByISBN(w, r)
+	}
+	if _, ok := params["author"]; ok {
+		GetByAuthor(w, r)
+	}
+}
+
 func Update(w http.ResponseWriter, r *http.Request) {
 	L.Info("POST /api/v1/books/update")
 	body, _ := io.ReadAll(r.Body)

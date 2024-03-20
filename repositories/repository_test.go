@@ -20,13 +20,14 @@ func NewMock() (*sql.DB, sqlmock.Sqlmock) {
 	return db, mock
 }
 
-func TestGetAllBooks(t *testing.T) {
-	db, mock := NewMock()
+var db, mock = NewMock()
 
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-	}
+var repo = repositories.BookRepository{
+	DB:    db,
+	Table: "Book",
+}
+
+func TestGetAllBooks(t *testing.T) {
 	expected := []repositories.Book{
 		{ISBN: "19123450", Name: "Atomic", Author: "Grahahm", PublishYear: 2022},
 		{ISBN: "12235670", Name: "Skinner", Author: "Albert", PublishYear: 2001},
@@ -53,19 +54,10 @@ func TestGetAllBooks(t *testing.T) {
 }
 
 func TestGetByISBN(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-	}
 	expected := []repositories.Book{
 		{ISBN: "12235670", Name: "Skinner", Author: "Albert", PublishYear: 2001},
 	}
-	sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
-		AddRow("19123450", "Atomic", "Grahahm", 2022).
-		AddRow("12235670", "Skinner", "Albert", 2001).
-		AddRow("12223900", "Short", "Victor", 1998)
+
 	expectedRows := sqlmock.NewRows([]string{"isbn", "nam", "author", "publish_year"}).
 		AddRow("12235670", "Skinner", "Albert", 2001)
 	mock.ExpectQuery(`SELECT (.*)`).WillReturnRows(expectedRows)
@@ -84,21 +76,10 @@ func TestGetByISBN(t *testing.T) {
 }
 
 func TestGetByAuthor(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-	}
 	expected := []repositories.Book{
 		{ISBN: "12235670", Name: "Skinner", Author: "Albert", PublishYear: 2001},
 		{ISBN: "12289970", Name: "Stlake", Author: "Albert", PublishYear: 1997},
 	}
-	sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
-		AddRow("19123450", "Atomic", "Grahahm", 2022).
-		AddRow("12235670", "Skinner", "Albert", 2001).
-		AddRow("12223900", "Short", "Victor", 1998).
-		AddRow("12289970", "Stlake", "Albert", 1997)
 	expectedRows := sqlmock.NewRows([]string{"isbn", "nam", "author", "publish_year"}).
 		AddRow("12235670", "Skinner", "Albert", 2001).
 		AddRow("12289970", "Stlake", "Albert", 1997)
@@ -118,21 +99,10 @@ func TestGetByAuthor(t *testing.T) {
 }
 
 func TestGetInRange(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-	}
 	expected := []repositories.Book{
 		{ISBN: "12235670", Name: "Skinner", Author: "Albert", PublishYear: 2001},
 		{ISBN: "19123450", Name: "Atomic", Author: "Grahahm", PublishYear: 2022},
 	}
-	sqlmock.NewRows([]string{"isbn", "name", "author", "publish_year"}).
-		AddRow("19123450", "Atomic", "Grahahm", 2022).
-		AddRow("12235670", "Skinner", "Albert", 2001).
-		AddRow("12223900", "Short", "Victor", 1998).
-		AddRow("12289970", "Stlake", "Albert", 1997)
 	expectedRows := sqlmock.NewRows([]string{"isbn", "nam", "author", "publish_year"}).
 		AddRow("12235670", "Skinner", "Albert", 2001).
 		AddRow("19123450", "Atomic", "Grahahm", 2022)
@@ -152,12 +122,6 @@ func TestGetInRange(t *testing.T) {
 }
 
 func TestUpdate(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-	}
 
 	isbn := "19123450"
 	newName := "Updated"
@@ -179,12 +143,6 @@ func TestUpdate(t *testing.T) {
 }
 
 func TestDelete(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-	}
 
 	isbn := "19123450"
 
@@ -203,12 +161,6 @@ func TestDelete(t *testing.T) {
 }
 
 func TestInsert(t *testing.T) {
-	db, mock := NewMock()
-
-	repo := repositories.BookRepository{
-		DB:    db,
-		Table: "Book",
-	}
 
 	isbn := "19123450"
 	newName := "Updated"

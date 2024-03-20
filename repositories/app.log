@@ -82,3 +82,11 @@
 2024-03-18T11:57:00.699+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-18T11:57:00.699+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
 2024-03-18T11:57:00.699+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:42:12.873+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book
+2024-03-20T10:42:12.874+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:42:12.874+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "isbn"=$1
+2024-03-20T10:42:12.874+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:42:12.874+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "author"=$1
+2024-03-20T10:42:12.874+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:42:12.874+0700	INFO	logger/logger.go:59	Querying SELECT isbn,name,author,publish_year from Book where "publish_year"<=$2 and "publish_year">=$1
+2024-03-20T10:42:12.874+0700	INFO	logger/logger.go:59	Query successfully
