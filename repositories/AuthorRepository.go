@@ -6,7 +6,6 @@ import (
 	_ "os"
 	_ "server/logger"
 	_ "strconv"
-	"time"
 
 	_ "github.com/joho/godotenv"
 	_ "github.com/lib/pq"
@@ -99,8 +98,8 @@ func (repo AuthorRepository) GetByName(name string) (Author, error) {
 	return author, err
 }
 
-func (repo AuthorRepository) Insert(name string) (sql.Result, error) {
-	res, err := repo.DB.Exec("INSERT INTO Author (name,birth_date) VALUES ($1,$2)", name, time.Now())
+func (repo AuthorRepository) Insert(data Author) (sql.Result, error) {
+	res, err := repo.DB.Exec("INSERT INTO Author (name,birth_date) VALUES ($1,$2)", data.Name, data.BirthDate)
 	if err != nil {
 		L.Error("Error insert author ", err)
 	} else {

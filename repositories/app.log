@@ -175,3 +175,53 @@
 2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
 2024-03-18T15:45:15.299+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T09:51:50.066+0700	ERROR	logger/logger.go:64	Error update book 	{"error": "ExecQuery: could not match actual sql: \"UPDATE Book SET name = $1, publish_year = $2 WHERE isbn = $3\" with expected regexp \"UPDATE Book SET name = $1, publish_year = $2 WHERE isbn = $3\""}
+2024-03-20T09:52:08.380+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T09:53:00.457+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:02:48.905+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:02:48.905+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:02:48.905+0700	ERROR	logger/logger.go:64	Error 	{"error": "Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1', arguments do not match: argument 0 expected [string - 123456789] does not match actual [string - Author]"}
+2024-03-20T10:02:48.905+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "call to ExecQuery 'INSERT INTO Author (name,birth_date) VALUES ($1,$2)' with args [{Name: Ordinal:1 Value:Author} {Name: Ordinal:2 Value:2024-03-20 10:02:48.9057388 +0700 +07 m=+0.023680101}], was not expected, next expectation is: ExpectedQuery => expecting Query, QueryContext or QueryRow which:\n  - matches sql: 'SELECT id,name,birth_date from Author WHERE \"name\"=\\$1'\n  - is with arguments:\n    0 - 123456789\n  - should return rows:\n    row 0 - [1 Author 17-04-2002]"}
+2024-03-20T10:02:48.905+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "call to ExecQuery 'INSERT INTO Author (name,birth_date) VALUES ($1,$2)' with args [{Name: Ordinal:1 Value:Author} {Name: Ordinal:2 Value:2024-03-20 10:02:48.9057388 +0700 +07 m=+0.023680101}], was not expected, next expectation is: ExpectedQuery => expecting Query, QueryContext or QueryRow which:\n  - matches sql: 'SELECT id,name,birth_date from Author WHERE \"name\"=\\$1'\n  - is with arguments:\n    0 - 123456789\n  - should return rows:\n    row 0 - [1 Author 17-04-2002]"}
+2024-03-20T10:02:48.905+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "call to ExecQuery ' INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);' with args [{Name: Ordinal:1 Value:123456789} {Name: Ordinal:2 Value:Name} {Name: Ordinal:3 Value:2024} {Name: Ordinal:4 Value:0}], was not expected, next expectation is: ExpectedQuery => expecting Query, QueryContext or QueryRow which:\n  - matches sql: 'SELECT id,name,birth_date from Author WHERE \"name\"=\\$1'\n  - is with arguments:\n    0 - 123456789\n  - should return rows:\n    row 0 - [1 Author 17-04-2002]"}
+2024-03-20T10:03:17.232+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:03:17.233+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:03:17.233+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery ' INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);', arguments do not match: argument 3 expected [int64 - 1] does not match actual [int64 - 0]"}
+2024-03-20T10:06:21.267+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:06:21.267+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:06:21.267+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:11:30.423+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:11:30.424+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:11:30.425+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:11:30.425+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "ExecQuery 'INSERT INTO Author (name,birth_date) VALUES ($1,$2)', arguments do not match: argument 1 expected [string - 17-04-2002] does not match actual [time.Time - 2024-03-20 10:11:30.425076 +0700 +07 m=+0.138524001]"}
+2024-03-20T10:11:30.425+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "ExecQuery 'INSERT INTO Author (name,birth_date) VALUES ($1,$2)', arguments do not match: argument 1 expected [string - 17-04-2002] does not match actual [time.Time - 2024-03-20 10:11:30.425076 +0700 +07 m=+0.138524001]"}
+2024-03-20T10:11:30.425+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:11:30.425+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:11:30.425+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1' with args [{Name: Ordinal:1 Value:Author}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'INSERT INTO Author \\(name,birth_date\\) VALUES \\(\\$1,\\$2\\)'\n  - is with arguments:\n    0 - Author\n    1 - 17-04-2002\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T10:11:30.425+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);\" with expected regexp \"INSERT INTO Author \\(name,birth_date\\) VALUES \\(\\$1,\\$2\\)\""}
+2024-03-20T10:12:22.250+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:12:22.250+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:12:22.250+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:12:22.250+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "ExecQuery 'INSERT INTO Author (name,birth_date) VALUES ($1,$2)', arguments do not match: argument 1 expected [time.Time - 2024-03-20 10:12:22.2492573 +0700 +07 m=+0.132096101] does not match actual [time.Time - 2024-03-20 10:12:22.2508966 +0700 +07 m=+0.133735401]"}
+2024-03-20T10:12:22.250+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "ExecQuery 'INSERT INTO Author (name,birth_date) VALUES ($1,$2)', arguments do not match: argument 1 expected [time.Time - 2024-03-20 10:12:22.2492573 +0700 +07 m=+0.132096101] does not match actual [time.Time - 2024-03-20 10:12:22.2508966 +0700 +07 m=+0.133735401]"}
+2024-03-20T10:12:22.250+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:12:22.250+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:12:22.250+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1' with args [{Name: Ordinal:1 Value:Author}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'INSERT INTO Author \\(name,birth_date\\) VALUES \\(\\$1,\\$2\\)'\n  - is with arguments:\n    0 - Author\n    1 - 2024-03-20 10:12:22.2492573 +0700 +07 m=+0.132096101\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T10:12:22.250+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);\" with expected regexp \"INSERT INTO Author \\(name,birth_date\\) VALUES \\(\\$1,\\$2\\)\""}
+2024-03-20T10:14:25.058+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:14:25.058+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:14:25.058+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:14:25.058+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:14:25.059+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:14:25.059+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:14:25.059+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:14:25.059+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1' with args [{Name: Ordinal:1 Value:Author}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);'\n  - is with arguments:\n    0 - 123456789\n    1 - Name\n    2 - 2024\n    3 - 1\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T10:14:25.059+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery 'INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);', arguments do not match: argument 3 expected [int64 - 1] does not match actual [int64 - 0]"}
+2024-03-20T10:16:19.846+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:16:19.846+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:16:19.846+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:16:19.846+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:16:19.846+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:16:19.846+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:16:19.846+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:16:19.847+0700	INFO	logger/logger.go:59	Insert successfully books

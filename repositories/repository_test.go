@@ -186,6 +186,169 @@ func TestGetInRange(t *testing.T) {
 	}
 }
 
+func TestUpdate(t *testing.T) {
+	db, mock := NewMock()
+
+	repo := repositories.BookRepository{
+		DB:    db,
+		Table: "Book",
+		AuthorRepo: repositories.AuthorRepository{
+			DB:    db,
+			Table: "author",
+		},
+	}
+
+	newBook := repositories.Book{
+		ISBN:        "123456789",
+		Name:        "Updated Book Name",
+		PublishYear: 2024,
+		Author:      repositories.Author{},
+	}
+
+	mock.ExpectExec(regexp.QuoteMeta("UPDATE Book SET name = $1, publish_year = $2 WHERE isbn = $3")).
+		WithArgs(newBook.Name, newBook.PublishYear, newBook.ISBN).
+		WillReturnResult((sqlmock.NewResult(0, 1)))
+
+	_, err := repo.Update(newBook)
+
+	if err != nil {
+		t.Errorf("Error when updating data")
+	}
+
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("Unfulfilled expectations: %s", err)
+	}
+}
+
+func TestDelete(t *testing.T) {
+	db, mock := NewMock()
+
+	repo := repositories.BookRepository{
+		DB:    db,
+		Table: "Book",
+		AuthorRepo: repositories.AuthorRepository{
+			DB:    db,
+			Table: "author",
+		},
+	}
+
+	newBook := repositories.Book{
+		ISBN:        "123456789",
+		Name:        "Name",
+		PublishYear: 2024,
+		Author:      repositories.Author{},
+	}
+
+	mock.ExpectExec(regexp.QuoteMeta("DELETE FROM Book WHERE isbn = $1")).
+		WithArgs(newBook.ISBN).
+		WillReturnResult((sqlmock.NewResult(0, 1)))
+
+	_, err := repo.Delete(newBook)
+
+	if err != nil {
+		t.Errorf("Error when deleting data")
+	}
+
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("Unfulfilled expectations: %s", err)
+	}
+}
+
+func TestInsertCaseExistAuthor(t *testing.T) {
+	db, mock := NewMock()
+
+	repo := repositories.BookRepository{
+		DB:    db,
+		Table: "Book",
+		AuthorRepo: repositories.AuthorRepository{
+			DB:    db,
+			Table: "author",
+		},
+	}
+
+	existAuthor := repositories.Author{
+		Id:        1,
+		Name:      "Author",
+		BirthDate: "17-04-2002",
+	}
+
+	newBook := repositories.Book{
+		ISBN:        "123456789",
+		Name:        "Name",
+		PublishYear: 2024,
+		Author:      existAuthor,
+	}
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
+		WithArgs(existAuthor.Name).
+		WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+			AddRow(1, "Author", "17-04-2002"))
+
+	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);")).
+		WithArgs(newBook.ISBN, newBook.Name, newBook.PublishYear, existAuthor.Id).
+		WillReturnResult((sqlmock.NewResult(0, 1)))
+	_, err := repo.Insert(newBook)
+
+	if err != nil {
+		t.Errorf("Error when Insert data")
+	}
+
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("Unfulfilled expectations: %s", err)
+	}
+}
+
+func TestInsertCaseNotExistAuthor(t *testing.T) {
+	db, mock := NewMock()
+
+	repo := repositories.BookRepository{
+		DB:    db,
+		Table: "Book",
+		AuthorRepo: repositories.AuthorRepository{
+			DB:    db,
+			Table: "author",
+		},
+	}
+
+	notExistAuthor := repositories.Author{
+		Id:        1,
+		Name:      "Author",
+		BirthDate: "17-04-2002",
+	}
+
+	newBook := repositories.Book{
+		ISBN:        "123456789",
+		Name:        "Name",
+		PublishYear: 2024,
+		Author:      notExistAuthor,
+	}
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
+		WithArgs(notExistAuthor.Name).
+		WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+			AddRow(nil, nil, nil))
+
+	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Author (name,birth_date) VALUES ($1,$2)")).
+		WithArgs(notExistAuthor.Name, notExistAuthor.BirthDate).
+		WillReturnResult(sqlmock.NewResult(0, 1))
+
+	mock.ExpectQuery(regexp.QuoteMeta(`SELECT id,name,birth_date from Author WHERE "name"=$1`)).
+		WithArgs(notExistAuthor.Name).
+		WillReturnRows(sqlmock.NewRows([]string{"id", "name", "birth_date"}).
+			AddRow(1, "Author", "17-04-2002"))
+
+	mock.ExpectExec(regexp.QuoteMeta("INSERT INTO Book (isbn, name, publish_year, id_author) VALUES ($1, $2, $3, $4);")).
+		WithArgs(newBook.ISBN, newBook.Name, newBook.PublishYear, notExistAuthor.Id).
+		WillReturnResult((sqlmock.NewResult(0, 1)))
+	_, err := repo.Insert(newBook)
+
+	if err != nil {
+		t.Errorf("Error when Insert data")
+	}
+
+	if err := mock.ExpectationsWereMet(); err != nil {
+		t.Errorf("Unfulfilled expectations: %s", err)
+	}
+}
+
 // func TestFailGetByISBN(t *testing.T) {
 // 	db, mock := NewMock()
 
