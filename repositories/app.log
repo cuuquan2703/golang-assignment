@@ -233,3 +233,180 @@
 2024-03-18T16:26:06.218+0700	INFO	logger/logger.go:59	Query successfully
 2024-03-18T16:26:06.218+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
 2024-03-18T16:26:06.218+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:19:03.124+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T10:20:33.991+0700	INFO	logger/logger.go:59	Delete from book_author table
+2024-03-20T10:20:33.991+0700	INFO	logger/logger.go:59	Delete successfully
+2024-03-20T10:20:33.991+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T10:20:33.992+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T10:23:06.343+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:23:06.343+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:23:06.343+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:23:06.344+0700	ERROR	logger/logger.go:64	Error 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:23:06.344+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:23:06.344+0700	ERROR	logger/logger.go:64	Error insert book_author 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:24:06.190+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:24:06.190+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:24:06.190+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:24:06.191+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:24:06.191+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);\" with expected regexp \"INSERT INTO Book_Author \\(id_book,id_author\\) VALUES \\(\\$1, \\$2\\);\""}
+2024-03-20T10:24:06.191+0700	INFO	logger/logger.go:59	Insert successfully book_author
+2024-03-20T10:24:24.607+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:24:24.607+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:24:24.607+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:24:24.607+0700	ERROR	logger/logger.go:64	Error 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:24:24.607+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:24:24.607+0700	ERROR	logger/logger.go:64	Error insert book_author 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:27:42.878+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:27:42.878+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:27:42.878+0700	ERROR	logger/logger.go:64	Error insert books 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:27:42.878+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:27:42.878+0700	ERROR	logger/logger.go:64	Error 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:27:42.878+0700	ERROR	logger/logger.go:64	Error insert book_author 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year, id_author\\) VALUES \\(\\$1, \\$2, \\$3, \\$4\\);\""}
+2024-03-20T10:28:50.802+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:28:50.802+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:28:50.802+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:28:50.802+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:28:50.802+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:28:50.802+0700	INFO	logger/logger.go:59	Insert successfully book_author
+2024-03-20T10:32:14.336+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:32:14.337+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:32:14.337+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1' with args [{Name: Ordinal:1 Value:Author}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'INSERT INTO Book \\(isbn, name, publish_year\\) VALUES \\(\\$1, \\$2, \\$3\\);'\n  - is with arguments:\n    0 - 123456789\n    1 - Name\n    2 - 2024\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:32:14.337+0700	INFO	logger/logger.go:59	Insert successfully book_author
+2024-03-20T10:32:35.955+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:32:35.955+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:32:35.955+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:32:35.955+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Author (name,birth_date) VALUES ($1,$2)\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year\\) VALUES \\(\\$1, \\$2, \\$3\\);\""}
+2024-03-20T10:32:35.955+0700	ERROR	logger/logger.go:64	Error insert author 	{"error": "ExecQuery: could not match actual sql: \"INSERT INTO Author (name,birth_date) VALUES ($1,$2)\" with expected regexp \"INSERT INTO Book \\(isbn, name, publish_year\\) VALUES \\(\\$1, \\$2, \\$3\\);\""}
+2024-03-20T10:32:35.955+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:32:35.955+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:32:35.955+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1' with args [{Name: Ordinal:1 Value:Author}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'INSERT INTO Book \\(isbn, name, publish_year\\) VALUES \\(\\$1, \\$2, \\$3\\);'\n  - is with arguments:\n    0 - 123456789\n    1 - Name\n    2 - 2024\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T10:32:35.955+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:32:35.955+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:32:35.955+0700	ERROR	logger/logger.go:64	Error 	{"error": "ExecQuery ' INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);', arguments do not match: argument 1 expected [int64 - 1] does not match actual [int64 - 0]"}
+2024-03-20T10:32:35.955+0700	ERROR	logger/logger.go:64	Error insert book_author 	{"error": "ExecQuery ' INSERT INTO Book_Author (id_book,id_author) VALUES ($1, $2);', arguments do not match: argument 1 expected [int64 - 1] does not match actual [int64 - 0]"}
+2024-03-20T10:32:45.991+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:32:45.991+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:32:45.992+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:32:45.992+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:32:45.992+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:32:45.992+0700	INFO	logger/logger.go:59	Insert successfully book_author
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.537+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn= ba.id_book 
+			JOIN author a ON ba.id_author = a.id 
+			WHERE a.name = $1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book  
+			WHERE b.publish_year<=$2 and b.publish_year>=$1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Delete from book_author table
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Delete successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Insert successfully book_author
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:34:54.538+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.539+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:34:54.539+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1' with args [{Name: Ordinal:1 Value:Author}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'INSERT INTO Book \\(isbn, name, publish_year\\) VALUES \\(\\$1, \\$2, \\$3\\);'\n  - is with arguments:\n    0 - 123456789\n    1 - Name\n    2 - 2024\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:34:54.539+0700	INFO	logger/logger.go:59	Insert successfully book_author
+2024-03-20T10:36:56.639+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book
+2024-03-20T10:36:56.640+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:36:56.640+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:36:56.640+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:36:56.640+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:36:56.640+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:36:56.640+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:36:56.640+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.902+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b JOIN book_author ba ON b.isbn = ba.id_book
+2024-03-20T10:37:46.902+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book 
+			WHERE b.isbn = $1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn= ba.id_book 
+			JOIN author a ON ba.id_author = a.id 
+			WHERE a.name = $1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT b.isbn,b.name,ba.id_author,b.publish_year from Book b 
+			JOIN book_author ba ON b.isbn = ba.id_book  
+			WHERE b.publish_year<=$2 and b.publish_year>=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE id=$1
+2024-03-20T10:37:46.903+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	update successfully book
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Delete from book_author table
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Delete successfully
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Delete successfully author
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Insert successfully book_author
+2024-03-20T10:37:46.904+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.905+0700	ERROR	logger/logger.go:64	Error 	{"error": "sql: Scan error on column index 0, name \"id\": converting NULL to int is unsupported"}
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Insert successfully author
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Querying SELECT id,name,birth_date from Author WHERE "name"=$1
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Query successfully
+2024-03-20T10:37:46.905+0700	ERROR	logger/logger.go:64	Error 	{"error": "call to Query 'SELECT id,name,birth_date from Author WHERE \"name\"=$1' with args [{Name: Ordinal:1 Value:Author}], was not expected, next expectation is: ExpectedExec => expecting Exec or ExecContext which:\n  - matches sql: 'INSERT INTO Book \\(isbn, name, publish_year\\) VALUES \\(\\$1, \\$2, \\$3\\);'\n  - is with arguments:\n    0 - 123456789\n    1 - Name\n    2 - 2024\n  - should return Result having:\n      LastInsertId: 0\n      RowsAffected: 1"}
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Insert successfully books
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Insert in to book_author table
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Insert successfully
+2024-03-20T10:37:46.905+0700	INFO	logger/logger.go:59	Insert successfully book_author

@@ -207,22 +207,23 @@ func (repo BookRepository) GetInRange(year1, year2 int) ([]Book, error) {
 func (repo BookRepository) Insert(data Book) (sql.Result, error) {
 	author, err := repo.AuthorRepo.GetByName(data.Author.Name)
 	if author == (Author{}) {
-		_, err = repo.AuthorRepo.Insert(data.Author.Name)
+		_, err = repo.AuthorRepo.Insert(data.Author)
 		if err != nil {
 			L.Error("Error insert author ", err)
 		} else {
 			L.Info("Insert successfully author")
 		}
+		data.Author, _ = repo.AuthorRepo.GetByName(data.Author.Name)
 	}
-	data.Author, _ = repo.AuthorRepo.GetByName(data.Author.Name)
 
 	res, err2 := repo.DB.Exec(" INSERT INTO Book (isbn, name, publish_year) VALUES ($1, $2, $3);", data.ISBN, data.Name, data.PublishYear)
-	_, err3 := repo.BookAuthorRepo.Insert(data.ISBN, data.Author.Id)
 	if err2 != nil {
 		L.Error("Error insert books ", err2)
 	} else {
 		L.Info("Insert successfully books")
 	}
+	_, err3 := repo.BookAuthorRepo.Insert(data.ISBN, data.Author.Id)
+
 	if err3 != nil {
 		L.Error("Error insert book_author ", err3)
 	} else {
