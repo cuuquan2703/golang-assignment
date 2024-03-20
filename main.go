@@ -14,6 +14,7 @@ func main() {
 	// 	log.Fatal(err)
 	// }
 	http.HandleFunc("GET /api/v1/books", Route.Get)
+	http.HandleFunc("GET /api/v1/books/i/{isbn}", Route.GetByISBN)
 	http.HandleFunc("GET /api/v1/books/range", Route.GetInRange)
 	http.HandleFunc("POST /api/v1/books/update", Route.Update)
 	http.HandleFunc("DELETE /api/v1/books/delete", Route.Delete)

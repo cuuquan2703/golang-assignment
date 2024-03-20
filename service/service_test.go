@@ -108,10 +108,6 @@ func TestGetInRange(t *testing.T) {
 		{ISBN: "12235670", Name: "Skinner", Author: "Albert", PublishYear: 2001},
 		{ISBN: "19123450", Name: "Atomic", Author: "Grahahm", PublishYear: 2022},
 	}
-	expectedRows := sqlmock.NewRows([]string{"isbn", "nam", "author", "publish_year"}).
-		AddRow("12235670", "Skinner", "Albert", 2001).
-		AddRow("19123450", "Atomic", "Grahahm", 2022)
-	mock.ExpectQuery(`SELECT (.*)`).WillReturnRows(expectedRows)
 
 	book, err := bookService.GetInRange(1999, 2023)
 	if err != nil {

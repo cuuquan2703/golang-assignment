@@ -40,9 +40,10 @@ func GetAllBooks(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetByISBN(w http.ResponseWriter, r *http.Request) {
-	L.Info("GET /api/v1/books/i/")
-	isbn := r.PathValue("isbn")
-	book, err := BookService.GetByISBN(isbn)
+	L.Info("GET /api/v1/books?{isbn}")
+	Url, _ := url.Parse(r.URL.String())
+	params, _ := url.ParseQuery(Url.RawQuery)
+	book, err := BookService.GetByISBN(params["isbn"][0])
 	if err != nil {
 		L.Error("Error: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
@@ -56,9 +57,10 @@ func GetByISBN(w http.ResponseWriter, r *http.Request) {
 }
 
 func GetByAuthor(w http.ResponseWriter, r *http.Request) {
-	L.Info("GET /api/v1/books/a/")
-	author := r.PathValue("author")
-	books, err := BookService.GetByAuthor(author)
+	L.Info("GET /api/v1/books?{author}")
+	Url, _ := url.Parse(r.URL.String())
+	params, _ := url.ParseQuery(Url.RawQuery)
+	books, err := BookService.GetByAuthor(params["author"][0])
 	if err != nil {
 		L.Error("Error: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
@@ -75,10 +77,10 @@ func GetInRange(w http.ResponseWriter, r *http.Request) {
 	L.Info("GET /api/v1/books/range")
 	Url, _ := url.Parse(r.URL.String())
 	params, _ := url.ParseQuery(Url.RawQuery)
-	year1, _ := strconv.Atoi(params["year1"][0])
-	year2, _ := strconv.Atoi(params["year2"][0])
+	from, _ := strconv.Atoi(params["from"][0])
+	to, _ := strconv.Atoi(params["to"][0])
 
-	books, err := BookService.GetInRange(year1, year2)
+	books, err := BookService.GetInRange(from, to)
 	if err != nil {
 		L.Error("Error: ", err)
 		response := &Response{Status: "fail", Message: err.Error()}
